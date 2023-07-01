@@ -18,13 +18,7 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": [
-        "quarto.quarto",
-        "peakchen90.open-html-in-browser",
-        "tecosaur.latex-utilities",
-        "James-Yu.latex-workshop",
-        "ban.spellright"
-      ]
+      "extensions": ["quarto.quarto", "peakchen90.open-html-in-browser"]
     }
   }
 }
