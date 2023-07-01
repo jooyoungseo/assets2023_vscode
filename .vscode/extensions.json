@@ -1,5 +1,9 @@
 {
     "recommendations": [
-        "github.codespaces"
+        "github.codespaces",
+        "tecosaur.latex-utilities",
+        "james-yu.latex-workshop",
+        "quarto.quarto",
+        "ban.spellright"
     ]
 }
