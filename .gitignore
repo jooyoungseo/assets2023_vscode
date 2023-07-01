@@ -1,5 +1,6 @@
 *.tex
 /.luarc.json
+comment.cut
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
