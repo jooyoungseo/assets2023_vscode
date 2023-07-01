@@ -1,7 +1,7 @@
 
 # assets2023_vscode
 
-This repo is for a manuscript in preparation for the ACM ASSETS 2023.
+This repo is for a manuscript in preparation for [the ACM ASSETS 2023](https://assets23.sigaccess.org/call-for-papers.html).
 
 ## How to Write?
 
