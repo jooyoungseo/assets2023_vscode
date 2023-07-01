@@ -15,7 +15,7 @@ short-title: Hope
 author:
   - name: JooYoung Seo
     email: jseo1005@illinois.edu
-    orcid: 1234-5678-9012
+    orcid: 0000-0002-4064-6012
     affiliation:
       name: School of Information Sciences, University of Illinois at Urbana-Champaign
       address: 614 E Daniel St
