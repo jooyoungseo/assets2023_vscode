@@ -96,10 +96,10 @@ acm-metadata:
     \ccsdesc[100]{Networks~Network reliability}
 
   keywords:
-    - datasets
-    - neural networks
-    - gaze detection
-    - text tagging
+    - non-visual programming
+    - accessibility
+    - integrated development environment
+    - visual studio code
   
   # if uncommented, this produces a teaser figure
   # 
