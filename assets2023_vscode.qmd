@@ -23,15 +23,16 @@ author:
       state: Illinois
       country: USA
       postal-code: 61820
-  - name: G.K.M. Tobin
-    email: webmaster@marysville-ohio.com
+  - name: Megan Rogge
+    email: megrogge@gmail.com
     affiliation:
-      name: Institute for Clarity in Documentation
-      address: P.O. Box 1212
-      city: Dublin
-      state: Ohio
+      name: Microsoft
+      address: 1 Microsoft Way
+      city: Redmond
+      state: Washington
       country: USA
-      postal-code: 43017-6221
+      postal-code: 98052
+
 
 # acm-specific metadata
 acm-metadata:
