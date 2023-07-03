@@ -125,32 +125,41 @@ In the following sections, we start with some background on how our collaboratio
 
 ## Visual Studio Code and Accessibility
 
-* Brief history of VSCode
+Visual Studio Code is a lightweight, free, and powerful open source code editor which runs on the desktop and in the web. It is available for Windows, macOS and Linux. It comes with built-in support for JavaScript, TypeScript and Node.js and has a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET). 
 
-* How accessibility commitment got started
+Accessibility is and has been a core priority for VS Code since its inception. Without a screen reader user on the team, VS Code relies heavily upon the tremendous contributions of community members for insight and direction.
 
 ## Biographies  of the Authors
 
 The first author of this paper is blind with only light perception, currently working as an assistant professor in the School of Information Sciences at the University of Illinois at Urbana-Champaign. At the university, he teaches introductory data science courses using R and Python to undergraduate and graduate students. As a lifelong non-visual programmer, he has experience with a variety of IDEs, including Visual Studio, Eclipse, and Net Bean, including text editors such as Emacs/Emacspeak, VIM, and NotePad++, on Linux, Mac, and Windows operating systems, using a variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver, and Orca) and refreshable braille displays. He is a certified professional in accessibility core competencies (CPACC) from the International Association of Accessibility Professionals and has contributed code to a number of open-source data science projects to improve screen reader accessibility, including RStudio IDE Server and the web-based data science dashboard Shiny, reproducible technical publishing systems (e.g., R Markdown, bookdown, and Quarto), and the data table package gt. He is also a member of Program-L, a community of blind programmers where blind programmers help and support each other. In this community, he has experienced first-hand the challenges that blind programmers face in using IDEs and how they overcome them by interacting with other blind programmers and participating in discussions. To improve these community-wide challenges, he created his first issue on the Microsoft VSCode public GitHub site on mm dd, yyy, and has since created a total of xx issues and xx comments, actively suggesting usability improvements for blind programmers in VSCode, and actively interacting and contributing with other open source developers.
 
-* About Megan
+The second author is a VS Code software engineer. She has worked on the product since graduating from the University of North Carolina at Chapel Hill in 2020 with highest distinction and highest honors for her research and work with Dr. Gary Bishop on semi-automated gaming for users with a wide range of disablities. About 10 months ago, Megan requested to take over responsibility for the product's accessibility. Since then, she has been working closely with JooYoung and the community to understand accessibility issues and collaborate on solutions.
 
 ## Collaboration Methods
 
-* How we met and collaborated
+Dr. Seo and Megan communicated via Github issues asynchronously for a few weeks before the two agreed that regularly meeting might be a more efficient and productive approach. Dr. Seo's ideas and insights paired well with Megan's willingness to learn and drive to improve the product's accessibility. 
 
-* GitHub issues/PR, email, test.
+During each meeting, Dr. Seo shared his screen and asked questions or offered suggestions while Megan offered insight, asked questions, and took notes about bugs or features to be addressed.
+
+These meetings allowed Megan to learn how Dr. Seo uses VS Code and helped him understand components of the product that might otherwise have been confusing or not discoverable. 
+
+The asynchronous communication on Github and via email continued; Megan would often send a follow up email summarizing the findings of their meetings before sharing it with the whole team and JooYoung would comment on the resultant issues if she missed anything or when testing the fixes.
 
 # Case Studies
+
+Nearly all accessibility fixes and features within the past year have been as a result of this collaboration. Below are several of the highlights.
 
 ## VSCode Terminal Buffer
 
 ## Git Diff and Audio Cues
 
-## Verbosity Settings
-
+## Verbosity Settings, Help Menus
 
 ## Copilot and Inline Suggestions
+
+## Accessibility Testing Initiative
+
+The VS Code team tests new features at the end of every month before each release. Megan noticed that while the team tested each platform - MacOS, Linux, and Windows, they were not testing the screen reader experience. A new protocol has been established to ensure better coverage going forward; the iteration following a feature's release, the team will test the feature using screen readers. Retroactive testing of features is currently underway to make up for this historical oversight. Dr. Seo's creation of issues about old and new features alike inspired and justified this initiaive. 
 
 # Discussion and Conclusion
 
