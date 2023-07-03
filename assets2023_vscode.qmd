@@ -158,7 +158,9 @@ Megan worked on terminal shell integration, a feature which enables VS Code to u
 
 ## Git Diff and Audio Cues
 
+* non-visual, non-speech, audible affordances
 
+* self-explanatory audios
 
 ## Verbosity Settings, Help Menus
 
@@ -170,7 +172,7 @@ Additionally, JooYoung shared that while it was helpful to meet and learn about 
 
 ## Copilot and Inline Suggestions
 
-
+* Recognizing the power of AI, JooYoung was excited to try out Copilot. He was disappointed to find that the inline suggestions were not accessible. He created an issue and Megan fixed it.
 
 ## Accessibility Testing Initiative
 
