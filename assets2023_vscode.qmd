@@ -137,11 +137,11 @@ The second author is a VS Code software engineer. She has worked on the product 
 
 ## Collaboration Methods
 
-Dr. Seo and Megan communicated via Github issues asynchronously for a few weeks before the two agreed that regularly meeting might be a more efficient and productive approach. Dr. Seo's ideas and insights paired well with Megan's willingness to learn and drive to improve the product's accessibility. 
+JooYoung and Megan communicated via Github issues asynchronously for a few weeks before the two agreed that regularly meeting might be a more efficient and productive approach. JooYoung's ideas and insights paired well with Megan's willingness to learn and drive to improve the product's accessibility. 
 
-During each meeting, Dr. Seo shared his screen and asked questions or offered suggestions while Megan offered insight, asked questions, and took notes about bugs or features to be addressed.
+During each meeting, JooYoung shared his screen and asked questions or offered suggestions while Megan offered insight, asked questions, and took notes about bugs or features to be addressed.
 
-These meetings allowed Megan to learn how Dr. Seo uses VS Code and helped him understand components of the product that might otherwise have been confusing or not discoverable. 
+These meetings allowed Megan to learn how JooYoung uses VS Code and helped him understand components of the product that might otherwise have been confusing or not discoverable. 
 
 The asynchronous communication on Github and via email continued; Megan would often send a follow up email summarizing the findings of their meetings before sharing it with the whole team and JooYoung would comment on the resultant issues if she missed anything or when testing the fixes.
 
@@ -159,7 +159,7 @@ Nearly all accessibility fixes and features within the past year have been as a 
 
 ## Accessibility Testing Initiative
 
-The VS Code team tests new features at the end of every month before each release. Megan noticed that while the team tested each platform - MacOS, Linux, and Windows, they were not testing the screen reader experience. A new protocol has been established to ensure better coverage going forward; the iteration following a feature's release, the team will test the feature using screen readers. Retroactive testing of features is currently underway to make up for this historical oversight. Dr. Seo's creation of issues about old and new features alike inspired and justified this initiaive. 
+The VS Code team tests new features at the end of every month before each release. Megan noticed that while the team tested each platform - MacOS, Linux, and Windows, they were not testing the screen reader experience. A new protocol has been established to ensure better coverage going forward; the iteration following a feature's release, the team will test the feature using screen readers. Retroactive testing of features is currently underway to make up for this historical oversight. JooYoung's creation of issues about old and new features alike inspired and justified this initiaive. 
 
 # Discussion and Conclusion
 
