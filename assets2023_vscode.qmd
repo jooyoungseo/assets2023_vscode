@@ -364,6 +364,3 @@ issue	microsoft/vscode	98918	closed	Terminal output div container should be more
 issue	microsoft/vscode	95570	closed	Support terminal link keyboard navigation	feature-request, accessibility, terminal, on-testplan, on-release-notes, terminal-links, insiders-released	2022-02-20T23:24:33Z
 issue	microsoft/vscode	90408	open	Feature request: Accessibility support for Jupyter notebooks in VSCode	feature-request, accessibility, notebook	2023-06-05T08:16:57Z
 ```
-```{python}
-
-```
