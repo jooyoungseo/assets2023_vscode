@@ -133,7 +133,7 @@ Accessibility is and has been a core priority for VS Code since its inception. W
 
 The first author of this paper is blind with only light perception, currently working as an assistant professor in the School of Information Sciences at the University of Illinois at Urbana-Champaign. At the university, he teaches introductory data science courses using R and Python to undergraduate and graduate students. As a lifelong non-visual programmer, he has experience with a variety of IDEs, including Visual Studio, Eclipse, and Net Bean, including text editors such as Emacs/Emacspeak, VIM, and NotePad++, on Linux, Mac, and Windows operating systems, using a variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver, and Orca) and refreshable braille displays. He is a certified professional in accessibility core competencies (CPACC) from the International Association of Accessibility Professionals and has contributed code to a number of open-source data science projects to improve screen reader accessibility, including RStudio IDE Server and the web-based data science dashboard Shiny, reproducible technical publishing systems (e.g., R Markdown, bookdown, and Quarto), and the data table package gt. He is also a member of Program-L, a community of blind programmers where blind programmers help and support each other. In this community, he has experienced first-hand the challenges that blind programmers face in using IDEs and how they overcome them by interacting with other blind programmers and participating in discussions. To improve these community-wide challenges, he created his first issue on the Microsoft VSCode public GitHub site on mm dd, yyy, and has since created a total of xx issues and xx comments, actively suggesting usability improvements for blind programmers in VSCode, and actively interacting and contributing with other open source developers.
 
-The second author is a VS Code software engineer. She has worked on the product since graduating from the University of North Carolina at Chapel Hill in 2020 with highest distinction and highest honors for her research and work with Dr. Gary Bishop on semi-automated gaming for users with a wide range of disablities. About 10 months ago, Megan requested to take over responsibility for the product's accessibility. Since then, she has been working closely with JooYoung and the community to understand accessibility issues and collaborate on solutions.
+The second author is a VS Code software engineer. She has worked on the product since graduating from the University of North Carolina at Chapel Hill in 2020 with highest distinction and highest honors for her research and work with Dr. Gary Bishop on semi-automated gaming for users with a wide range of disablities. About 10 months ago, Megan requested to take over responsibility for the product's accessibility. Since then, she has been working closely with Dr. Seo and the community to understand accessibility issues and collaborate on solutions.
 
 ## Collaboration Methods
 
@@ -143,13 +143,15 @@ During each meeting, Dr. Seo shared his screen and asked questions or offered su
 
 These meetings allowed Megan to learn how Dr. Seo uses VS Code and helped him understand components of the product that might otherwise have been confusing or not discoverable. 
 
-The asynchronous communication on Github and via email continued; Megan would often send a follow up email summarizing the findings of their meetings before sharing it with the whole team and JooYoung would comment on the resultant issues if she missed anything or when testing the fixes.
+The asynchronous communication on Github and via email continued; Megan would often send a follow up email summarizing the findings of their meetings before sharing it with the whole team and Dr. Seo would comment on the resultant issues if she missed anything or when testing the fixes.
 
 # Case Studies
 
 Nearly all accessibility fixes and features within the past year have been as a result of this collaboration. Below are several of the highlights.
 
-## VSCode Terminal Buffer
+## VS Code Terminal Buffer
+
+Megan worked on terminal shell integration, a feature which enables VS Code to understand what's going on in the terminal. This allows a user to navigate easily between commands, copy command output, and more. Dr. Seo shared his screen and tested the feature and pointed out that the actual terminal buffer was still inaccessible for screen reader users - since it could not be navigated using arrow keys. He suggested that the output view provides a more accessible experience, so Megan discussed this with a colleague and determined that we should try to use the same underlying component for the terminal. This allowed the formerly "black box" of the terminal buffer to be navigable via arrow keys for screen reader users. Dr. Seo suggested that command navigation provided by shell integration could also be used in this accessible buffer and Megan implemented that as well. 
 
 ## Git Diff and Audio Cues
 
