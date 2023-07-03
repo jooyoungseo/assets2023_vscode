@@ -130,7 +130,7 @@ Visual Studio Code is a lightweight, free, and powerful open source code editor 
 
 Accessibility is and has been a core priority for VS Code since its inception. Without a screen reader user on the team, VS Code relies heavily upon the tremendous contributions of community members for insight and direction.
 
-## Biographies  of the Authors
+## Biographies of the Authors
 
 The first author of this paper is blind with only light perception, currently working as an assistant professor in the School of Information Sciences at the University of Illinois at Urbana-Champaign. At the university, he teaches introductory data science courses using R and Python to undergraduate and graduate students. As a lifelong non-visual programmer, he has experience with a variety of IDEs, including Visual Studio, Eclipse, and Net Bean, including text editors such as Emacs/Emacspeak, VIM, and NotePad++, on Linux, Mac, and Windows operating systems, using a variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver, and Orca) and refreshable braille displays. He is a certified professional in accessibility core competencies (CPACC) from the International Association of Accessibility Professionals and has contributed code to a number of open-source data science projects to improve screen reader accessibility, including RStudio IDE Server and the web-based data science dashboard Shiny, reproducible technical publishing systems (e.g., R Markdown, bookdown, and Quarto), and the data table package gt. He is also a member of Program-L, a community of blind programmers where blind programmers help and support each other. In this community, he has experienced first-hand the challenges that blind programmers face in using IDEs and how they overcome them by interacting with other blind programmers and participating in discussions. To improve these community-wide challenges, he created his first issue on the Microsoft VSCode public GitHub site on mm dd, yyy, and has since created a total of xx issues and xx comments, actively suggesting usability improvements for blind programmers in VSCode, and actively interacting and contributing with other open source developers.
 
@@ -148,17 +148,27 @@ The asynchronous communication on Github and via email continued; Megan would of
 
 # Case Studies
 
-Nearly all accessibility fixes and features within the past year have been as a result of this collaboration. Below are several of the highlights.
+Nearly all VS Code accessibility fixes and features within the past year are products of this collaboration.
 
-## VS Code Terminal Buffer
+## Terminal Buffer
 
 Megan worked on terminal shell integration, a feature which enables VS Code to understand what's going on in the terminal. This allows a user to navigate easily between commands, copy command output, and more. JooYoung shared his screen, tested the feature, and pointed out that the actual terminal buffer was still inaccessible for screen reader users - since it could not be navigated using arrow keys. He suggested that the output view provides a more accessible experience, so Megan discussed this with a colleague and determined that the same underlying component should be used for the terminal. This allowed the formerly "black box" of the terminal buffer to be navigable via arrow keys for screen reader users. JooYoung suggested that command navigation provided by shell integration could also be used in this accessible buffer and Megan implemented that as well. 
 
 ## Git Diff and Audio Cues
 
+
+
 ## Verbosity Settings, Help Menus
 
+Dr. Seo created issues pointing out places where minor tweaks to the order or content of an aria label could yield massive productivity improvements for screen reader users. Megan fixed some such instances and pointed team members toward others, providing guidance about best practices going forward.
+
+Megan started self hosting with a screen reader shortly after this in order to proactively identify other problems. She felt overwhelmed by the noise and noticed some content was repeated ad nauseum, so created an issue and sought the feedback of Dr. Seo, who suggested that screen reader settings dictate verbosity to remedy this and a similar approach could be applied to VS Code's aria content.
+
+Additionally, Dr. Seo shared that while it was helpful to meet and learn about the new features via our meetings, most screen reader users did not have this luxury. Megan and her colleague, Daniel, brainstormed about a discoverable way for screen reader users to find out about terminal features. Upon terminal focus, an aria label conveyed how to access the terminal's accessibility help menu. To reduce noise, this hint could be disabled with a verbosity setting. Since then, help menus and verbosity settings have been added for the Copilot inline and panel chat, notebook, and other features.
+
 ## Copilot and Inline Suggestions
+
+
 
 ## Accessibility Testing Initiative
 
