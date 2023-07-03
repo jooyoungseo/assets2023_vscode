@@ -1,5 +1,12 @@
 {
   "quarto.render.previewReveal": true,
   "quarto.render.renderOnSave": true,
-  "quarto.render.previewType": "internal"
+  "quarto.render.previewType": "internal",
+  "grammarly.selectors": [
+    {
+      "language": "quarto",
+      "scheme": "file",
+      "pattern": "assets2023_vscode.qmd"
+    }
+  ]
 }
