@@ -7,7 +7,7 @@ keep-tex: true
 
 bibliography: bibliography.bib
 
-title: Coding Non-visually in Visual Studio Code: Collaboration Towards Accessible Development Environment for Blind Programmers
+title: "Coding Non-visually in Visual Studio Code: Collaboration Towards Accessible Development Environment for Blind Programmers"
 
 # if short-title is defined, then it's used
 short-title: VSCode_A11y
