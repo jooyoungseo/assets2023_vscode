@@ -171,10 +171,9 @@ More specifically, he proposed replacing the terminal output with a text editor 
 
 ## Git Diff and Audio Cues
 
-Git has been around for decades as a version control tool like SVN, but its popularity has really taken off with the rise of open-source social coding platforms based on Git, such as GitHub and GitLab. Naturally, there have been many personal and social needs for blind and sighted people to utilize Git in collaborative environments. git is originally a Unix-based command-line tool, so in terms of accessibility, blind people can use a screen reader to fully utilize Git in a terminal. However, since Git has over 100 core commands, and the number of possible combinations could be in the millions, using Git via the command line takes a lot of effort and time to become proficient. In response, various tools have emerged that allow you to use Git as a GUI, and VSCode is a very popular IDE that supports a collaborative environment using Git.
+Git has been around for decades as a version control tool like SVN, but its popularity has really taken off with the rise of open-source social coding platforms based on Git, such as GitHub and GitLab. Naturally, there have been many personal and social needs for blind people to utilize Git in collaborative environments. git is originally a Unix-based command-line tool, so in terms of accessibility, blind people can use a screen reader to fully utilize Git in a terminal. However, since Git has over 100 core Git commands, and the number of possible combinations could be in the millions, using Git via the command line takes a lot of effort and time to become proficient. In response, various tools have emerged that allow you to use Git as a GUI, and VSCode is a very popular IDE that supports a collaborative environment using Git.
 
-Git provides a track changes feature that allows you to compare changes between files in an asynchronous collaborative environment, called `git diff`. Literally, the `git diff` command compares and shows the differences between files or between commits, with newly added lines in the reference file marked with a + and removed lines marked with a - prefix.
-
+Git provides a track changes feature that allows you to compare changes between files in an asynchronous collaborative environment, called `git diff`. Literally, the `git diff` command compares and shows the differences between a file and a file, or between a commit and a commit, with newly added lines in green and + and removed lines in red and - prefixed.
 
 
 
