@@ -4,6 +4,7 @@
         "tecosaur.latex-utilities",
         "james-yu.latex-workshop",
         "quarto.quarto",
-        "ban.spellright"
+        "ban.spellright",
+        "github.vscode-pull-request-github"
     ]
 }

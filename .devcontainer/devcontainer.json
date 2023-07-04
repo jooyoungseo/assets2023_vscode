@@ -23,7 +23,8 @@
 		"peakchen90.open-html-in-browser",
 		"tecosaur.latex-utilities",
 		"James-Yu.latex-workshop",
-		"ban.spellright"
+		"ban.spellright",
+		"GitHub.vscode-pull-request-github"
 	]
     }
   }
