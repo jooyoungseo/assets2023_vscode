@@ -1,5 +1,12 @@
 ---
-format: acm-pdf
+editor:
+  render-on-save: true
+  mode: visual
+format:
+  acm-pdf:
+    include-in-header:
+      text: |
+        % !TEX program = xelatex
 
 # use keep-tex to cause quarto to generate a .tex file
 # which you can eventually use with TAPS
@@ -10,7 +17,7 @@ bibliography: bibliography.bib
 title: "Coding Non-visually in Visual Studio Code: Collaboration Towards Accessible Development Environment for Blind Programmers"
 
 # if short-title is defined, then it's used
-short-title: VSCode_A11y
+short-title: "VSCode"
 
 author:
   - name: JooYoung Seo
@@ -32,7 +39,6 @@ author:
       state: Washington
       country: USA
       postal-code: 98052
-
 
 # acm-specific metadata
 acm-metadata:
@@ -96,7 +102,7 @@ acm-metadata:
     \ccsdesc[100]{Networks~Network reliability}
 
   keywords:
-    - non-visual programming
+    - nonvisual programming
     - accessibility
     - integrated development environment
     - visual studio code
@@ -110,6 +116,7 @@ acm-metadata:
 
 abstract: |
   In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insiders releases we've created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments.
+
 ---
 
 # Introduction
@@ -134,7 +141,7 @@ Among the many architectural elements of VSCode, the following, in particular, h
 
 ## Biographies of the Authors
 
-The first author of this paper is blind with only light perception, currently working as an assistant professor in the School of Information Sciences at the University of Illinois at Urbana-Champaign. At the university, he teaches introductory data science courses using R and Python to undergraduate and graduate students. As a lifelong non-visual programmer, he has experience with a variety of IDEs, including Visual Studio, Eclipse, and Net Bean, including text editors such as Emacs/Emacspeak, VIM, and NotePad++, on Linux, Mac, and Windows operating systems, using a variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver, and Orca) and refreshable braille displays. He is a certified professional in accessibility core competencies (CPACC) from the International Association of Accessibility Professionals and has contributed code to a number of open-source data science projects to improve screen reader accessibility, including RStudio IDE Server and the web-based data science dashboard Shiny, reproducible technical publishing systems (e.g., R Markdown, bookdown, and Quarto), and the data table package gt. He is also a member of Program-L, a community of blind programmers where blind programmers help and support each other. In this community, he has experienced first-hand the challenges that blind programmers face in using IDEs and how they overcome them by interacting with other blind programmers and participating in discussions. To improve these community-wide challenges, he created his first issue on the Microsoft VSCode public GitHub site on May 31, 2020, and has since created a total of 164 contributions (87 issues; 76 post comments and mentions; 1 pull request) to actively suggest usability improvements for blind programmers in VSCode and interact with other open source developers (see Appendix for more details).
+The first author of this paper is blind with only light perception, currently working as an assistant professor in the School of Information Sciences at the University of Illinois at Urbana-Champaign. At the university, he teaches introductory data science courses using R and Python to undergraduate and graduate students. As a lifelong non-visual programmer, he has experience with a variety of IDEs, including Visual Studio, Eclipse, and Net Bean, including text editors such as Emacs/Emacspeak, VIM, and NotePad++, on Linux, Mac, and Windows operating systems, using a variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver, and Orca) and refreshable braille displays. He is a certified professional in accessibility core competencies (CPACC) from the International Association of Accessibility Professionals and has contributed code to a number of open-source data science projects to improve screen reader accessibility, including RStudio IDE Server and the web-based data science dashboard Shiny, reproducible technical publishing systems (e.g., R Markdown, bookdown, and Quarto), and the data table package gt. He is also a member of Program-L, a community of blind programmers where blind programmers help and support each other. In this community, he has experienced first-hand the challenges that blind programmers face in using IDEs and how they overcome them by interacting with other blind programmers and participating in discussions. To improve these community-wide challenges, he created his first issue on the Microsoft VSCode public GitHub site on May 31, 2020, and has since created a total of 164 contributions (87 issues; 76 post comments and mentions; 1 pull request) to actively suggest usability improvements for blind programmers in VSCode and interact with other open source developers (see Appendix @sec-gh_log for more details).
 
 The second author is a VS Code software engineer. She has worked on the product since graduating from the University of North Carolina at Chapel Hill in 2020 with highest distinction and highest honors for her research and work with Dr. Gary Bishop on semi-automated gaming for users with a wide range of disablities. About 10 months ago, Megan requested to take over responsibility for the product's accessibility. Since then, she has been working closely with JooYoung and the community to understand accessibility issues and collaborate on solutions.
 
@@ -198,11 +205,15 @@ We thank ...
 
 # Appendix
 
+# Appendix: VSCodeAccessibility Discussions on GitHub {#sec-gh_log}
+
+The following are JooYoung's GitHub contributions related to accessibility up to the time of this paper's submission.
+
 ``` sh
 $ gh search issues --repo microsoft/vscode --include-prs --involves jooyoungseo -L 200
 ```
 
-```{block}
+``` sh
 issue	microsoft/vscode	186857	open	[Accessibility] Checkboxes are unlabeled in `Export Profile...`	bug, accessibility	2023-07-03T15:16:09Z
 issue	microsoft/vscode	186754	open	data science audio and text graph for visually impaired person	feature-request, accessibility	2023-07-03T15:44:25Z
 issue	microsoft/vscode	186679	open	Alert that the help hint has been disabled	bug, accessibility	2023-06-29T21:41:13Z
