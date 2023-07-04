@@ -175,9 +175,11 @@ Git has been around for decades as a version control tool like SVN, but its popu
 
 Git provides a track changes feature that allows you to compare changes between files in an asynchronous collaborative environment, called `git diff`. Literally, the `git diff` command compares and shows the differences between a file and a file, or between a commit and a commit, with newly added lines in green and + and removed lines in red and - prefixed.
 
+VSCode had always provided an accessible `git diff` function for screen reader users. With the files or commits users want to compare open, pressing `F7` (Go to Next Difference) and `Shift+F7` (Go to Previous Difference) would skip to the area where the differences are, prefixing the line with the change with a + or - sign to indicate the nature of the change. Of course, this approach was fine from an accessibility standpoint, but there was room for improvement in terms of usability and convenience for blind users. For example, visual affordances like color coding and +- signs in `git diff` allowed sighted people to skim quickly, but blind people had to listen to additional speech prefixes, pronounced + (plus) and - (dash), serially and wait for information before each change. Even then, depending on the punctuation pronunciation settings of the screen reader, the +- sign could be omitted and delivered to the screen reader.
+
+To remedy this, JooYoung suggested adding non-visual, non-speech, and audible affordances to `git diff` in addition to +- signatures, so that blind people can hear them correctly and easily understand them [microsoft/vscode#147226: [Accessibility] Consider adding audio cues for diffs (added / deleted code)](https://github.com/microsoft/vscode/issues/147226).
 
 
-* non-visual, non-speech, audible affordances
 
 * self-explanatory audios
 
