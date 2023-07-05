@@ -1,4 +1,6 @@
 {
+  "files.encoding": "utf8",
+  "files.eol": "\n",
   "quarto.render.previewReveal": true,
   "quarto.render.renderOnSave": true,
   "quarto.render.previewType": "internal",
