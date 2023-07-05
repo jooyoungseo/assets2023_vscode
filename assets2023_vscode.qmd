@@ -231,6 +231,7 @@ We thank ...
 - Roberto Perez
 - José Vilmar Estácio de Souza
 - VS Code team
+- Amnon Freidlin
 :::
 
 # References {-}
