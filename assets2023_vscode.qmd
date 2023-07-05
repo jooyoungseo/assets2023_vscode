@@ -196,9 +196,9 @@ Megan started self hosting with a screen reader shortly after this in order to p
 
 Additionally, JooYoung shared that while it was helpful to meet and learn about the new features via our meetings, most screen reader users did not have this luxury. Megan and her colleague, Daniel, brainstormed about a discoverable way for screen reader users to find out about terminal features. Upon terminal focus, an aria label conveyed how to access the terminal's accessibility help menu. To reduce noise, this hint could be disabled with a verbosity setting. Since then, help menus and verbosity settings have been added for the Copilot inline and panel chat, notebook, and other features.
 
-For example, the terminal accessibility help menu contains helpful information for screen reader users such as commands to run.
+For example, the terminal accessibility help menu contains helpful information for screen reader users such as commands to run. A screen reader user can use arrow keys to read the content line by line, character by character.
 
-![The terminal accessibility help menu is focused](/images/accessibility-help-menu.png)
+![A line in the help menu is focused and VoiceOver reads "The terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:"](/images/accessibility-help-menu.png)
 
 ## Copilot and Inline Suggestions
 
