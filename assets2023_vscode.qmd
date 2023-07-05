@@ -115,7 +115,7 @@ acm-metadata:
   #   description: teaser description    
 
 abstract: |
-  In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insiders releases we've created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments.
+  In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insider's releases we've created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments.
 
 ---
 
@@ -169,6 +169,9 @@ Megan worked on terminal shell integration, a feature which enables VS Code to u
 
 More specifically, he proposed replacing the terminal output with a text editor buffer that allowed for standard arrow-key navigation. This process took over a year and a lot of technical trial and error and collaborative testing. For example, we started with a remarkup to redirect the terminal output web container, which was initially designated as "list", to the aria "document" or "textbox" landmarks, but were unable to achieve satisfactory results due to varying levels of screen reader and platform support for aria. Next, we remodeled the terminal output into a text area with "contenteditable" and "readonly" attributes, but this was not very compatible with the screen reader's speech buffer. Finally, we created a separate accessible terminal buffer by passing the terminal output to VSCode's native Monaco editor, which is guaranteed accessible, leading to a successful feature that ensures satisfactory accessibility and usability on any operating system or screen reader. This terminal buffer feature was officially released in VSCode stable version xx and has been very well received by many users in the Program-L community.
 
+For example, with VoiceOver on, the terminal buffer is entered for a task terminal. A line with an error is focused and read by VoiceOver.
+![VoiceOver reads "rvice.ts(2018,13: Cannot find name 'taskSet'"](images/terminal-accessible-buffer.png)
+
 ## Git Diff and Audio Cues
 
 Git has been around for decades as a version control tool like SVN, but its popularity has really taken off with the rise of open-source social coding platforms based on Git, such as GitHub and GitLab. Naturally, there have been many personal and social needs for blind people to utilize Git in collaborative environments. git is originally a Unix-based command-line tool, so in terms of accessibility, blind people can use a screen reader to fully utilize Git in a terminal. However, since Git has over 100 core Git commands, and the number of possible combinations could be in the millions, using Git via the command line takes a lot of effort and time to become proficient. In response, various tools have emerged that allow you to use Git as a GUI, and VSCode is a very popular IDE that supports a collaborative environment using Git.
@@ -193,6 +196,10 @@ Megan started self hosting with a screen reader shortly after this in order to p
 
 Additionally, JooYoung shared that while it was helpful to meet and learn about the new features via our meetings, most screen reader users did not have this luxury. Megan and her colleague, Daniel, brainstormed about a discoverable way for screen reader users to find out about terminal features. Upon terminal focus, an aria label conveyed how to access the terminal's accessibility help menu. To reduce noise, this hint could be disabled with a verbosity setting. Since then, help menus and verbosity settings have been added for the Copilot inline and panel chat, notebook, and other features.
 
+For example, the terminal accessibility help menu contains helpful information for screen reader users such as commands to run. A screen reader user can use arrow keys to read the content line by line, character by character.
+
+![A line in the help menu is focused and VoiceOver reads "The terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:"](/images/accessibility-help-menu.png)
+
 ## Copilot and Inline Suggestions
 
 * Recognizing the power of AI, JooYoung was excited to try out Copilot. He was disappointed to find that the inline suggestions were not accessible. He created an issue and Megan fixed it.
@@ -205,12 +212,25 @@ The VS Code team tests new features at the end of every month before each releas
 
 * Reflection on what we have learned from this collaboration.
 
+Screen reader users have unique insight into accessibility issues and provide creative solutions to technical problems. Collaborating with screen reader users improves understanding of accessibility issues (for the sighted developer) and features (for the screen reader user), increases the drive to address issues, and dramatically improves the accessibility of a product. Increased accessibility results in a better product for all. For example, while the terminal accessible buffer was designed for screen reader users, others have suggested they [benefit from the feature](https://github.com/microsoft/vscode/issues/182210#issuecomment-1546733921). 
+
 * What we recommend for other open-source communities for better accessibility.
+
+It is important to share findings so that other developers can learn and apply the knowledge to their applications. Megan and JooYoung participated in an [accessibility presentation](https://learn.microsoft.com/en-us/events/vs-code-day-2023/accessibilty-in-vs-code) via livestream which reached 159,769 people within just the first two weeks. Additionally, JooYoung will be leading the team in a deep dive about his experience using VS Code. Megan believes getting a glimpse of JooYoung's experience will help the team understand the importance of and challenges related to accessibility.
+
+Considering accessibility early on in a feature's implementation is critical so that screen reader users can experience the latest technology without delay. Working closely with JooYoung, Megan has witnessed that screen reader users can be totally blocked if this is not considered or addressed properly. As such, accessibility fixes should be prioritized over most others.
 
 # Acknowledgments
 
 ::: acks
 We thank ...
+- Isidor Nikolic
+- Kai Maetzel
+- Daniel Imms
+- Raymond Zhao
+- Roberto Perez
+- José Vilmar Estácio de Souza
+- VS Code team
 :::
 
 # References {-}
