@@ -1,6 +1,79 @@
 {
   "files.encoding": "utf8",
   "files.eol": "\n",
+  "latex-workshop.latex.tools": [
+    {
+      "name": "xelatexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-xelatex",
+        "-f",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ],
+
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (xelatex --force)",
+      "tools": ["xelatexmk"]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "latexmk (xelatex --force)",
+  // "latex-workshop.latex.build.forceRecipeUsage": false,
+  "latex-workshop.texcount.autorun": "onSave",
+  "[tex]": {
+    // Enable intellisence/quick suggestions
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // Indentation size
+    "editor.tabSize": 2
+  },
+  "[latex]": {
+    // Enable intellisence/quick suggestions
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // Indentation size
+    "editor.tabSize": 2
+  },
+  "[bibtex]": {
+    // Indentation size
+    "editor.tabSize": 2
+  },
+  // ---------- LaTeX Workshop ----------
+  //  Enable command and environment completion for used package
+  "latex-workshop.intellisense.package.enabled": true,
+  // target file when deleting generated file
+  // Add "* .synctex.gz" to default value
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.cut",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav",
+    "*.dvi",
+    "*.synctex.gz"
+  ],
   "quarto.render.previewReveal": true,
   "quarto.render.renderOnSave": true,
   "quarto.render.previewType": "internal",
