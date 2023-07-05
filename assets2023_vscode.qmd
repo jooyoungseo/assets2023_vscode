@@ -223,6 +223,7 @@ We thank ...
 - Raymond Zhao
 - Roberto Perez
 - José Vilmar Estácio de Souza
+- VS Code team
 :::
 
 # References {-}
