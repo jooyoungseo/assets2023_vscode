@@ -205,7 +205,7 @@ The VS Code team tests new features at the end of every month before each releas
 
 * Reflection on what we have learned from this collaboration.
 
-Screen reader users have unique insight into accessibility issues and provide creative solutions to technical problems. Collaborating with screen reader users improves understanding of accessibility issues (for the sighted developer) and features (for the screen reader using developer), increases the drive to address issues, and dramatically improves the accessibility of a product. Increased accessibility results in a better product for all.
+Screen reader users have unique insight into accessibility issues and provide creative solutions to technical problems. Collaborating with screen reader users improves understanding of accessibility issues (for the sighted developer) and features (for the screen reader user), increases the drive to address issues, and dramatically improves the accessibility of a product. Increased accessibility results in a better product for all. For example, while the terminal accessible buffer was designed for screen reader users, others have suggested they [benefit from the feature](https://github.com/microsoft/vscode/issues/182210#issuecomment-1546733921). 
 
 * What we recommend for other open-source communities for better accessibility.
 
