@@ -209,7 +209,7 @@ Screen reader users have unique insight into accessibility issues and provide cr
 
 * What we recommend for other open-source communities for better accessibility.
 
-It is important to share findings so that other developers and applications can learn as well. Some ways we've done that include sharing meeting outcomes with the VS Code team, livestreaming an accessibility presentation - featuring a recording of JooYoung, and doing a deep dive conversation with the team in which JooYoung shares his screen and shows his flow within the product.
+It is important to share findings so that other developers can learn and apply the knowledge to their applications. Some ways we've done that include sharing meeting outcomes with the VS Code team, livestreaming an accessibility presentation - featuring a recording of JooYoung, and doing a deep dive conversation with the team in which JooYoung shares his screen and shows his flow within the product.
 
 Considering accessibility early on in a feature's implementation is crucial and results in a better product for all. This is critical so that screen reader users can use the latest technology without delay.
 
