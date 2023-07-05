@@ -199,11 +199,13 @@ Additionally, JooYoung shared that while it was helpful to meet and learn about 
 
 ## Accessibility Testing Initiative
 
-The VS Code team tests new features at the end of every month before each release. Megan noticed that while the team tested each platform - MacOS, Linux, and Windows, they were not testing the screen reader experience. A new protocol has been established to ensure better coverage going forward; the iteration following a feature's release, the team will test the feature using screen readers. Retroactive testing of features is currently underway to make up for this historical oversight. JooYoung's creation of issues about old and new features alike inspired and justified this initiaive. 
+The VS Code team tests new features at the end of every month before each release. Megan noticed that while the team tested each platform - MacOS, Linux, and Windows, they were not testing the screen reader experience. A new protocol has been established to ensure better coverage going forward; the iteration following a feature's release, the team will test the feature using screen readers. Retroactive testing of features is currently underway to make up for this historical oversight. JooYoung's creation of issues about old and new features alike inspired and justified this initiaive.
 
 # Discussion and Conclusion
 
+* Reflection on what we have learned from this collaboration.
 
+* What we recommend for other open-source communities for better accessibility.
 
 # Acknowledgments
 
