@@ -9,7 +9,7 @@ July 7
 
 ## How to Write?
 
-Please use `codespace`` and VSCode to edit the manuscript file (*assets2023_vscode.qmd*). You can preview the real-time rendered output by pressing Ctrl+Shift+K in the qmd file.
+Please use `codespace` and VSCode to edit the manuscript file (*assets2023_vscode.qmd*). You can preview the real-time rendered output by pressing Ctrl+Shift+K in the qmd file.
 
 Note: it takes some time to install required LaTeX packages when you render the qmd file for the first time.
 
