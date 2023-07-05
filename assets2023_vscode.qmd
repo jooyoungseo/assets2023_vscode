@@ -115,7 +115,7 @@ acm-metadata:
   #   description: teaser description    
 
 abstract: |
-  In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insiders releases we've created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments.
+  In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insider's releases we've created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments.
 
 ---
 
@@ -205,12 +205,24 @@ The VS Code team tests new features at the end of every month before each releas
 
 * Reflection on what we have learned from this collaboration.
 
+Screen reader users have unique insight into accessibility issues and provide creative solutions to technical problems. Collaborating with screen reader users improves understanding of accessibility issues (for the sighted developer) and features (for the screen reader using developer), increases the drive to address issues, and dramatically improves the accessibility of a product. 
+
 * What we recommend for other open-source communities for better accessibility.
+
+It is important to share findings so that other developers and applications can learn as well. Some ways we've done that include sharing meeting outcomes with the VS Code team, livestreaming an accessibility presentation - featuring a recording of JooYoung, and doing a deep dive conversation with the team in which JooYoung shares his screen and shows his flow within the product.
+
+Considering accessibility early on in a feature's implementation is crucial and results in a better product for all. This is critical so that screen reader users can use the latest technology without delay.
 
 # Acknowledgments
 
 ::: acks
 We thank ...
+- Isidor Nikolic
+- Kai Maetzel
+- Daniel Imms
+- Raymond Zhao
+- Roberto Perez
+- José Vilmar Estácio de Souza
 :::
 
 # References {-}
