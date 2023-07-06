@@ -105,14 +105,14 @@ Considering accessibility early on in a feature's implementation is critical so 
 
 ::: acks
 We thank ...
-- Isidor Nikolic
-- Kai Maetzel
-- Daniel Imms
-- Raymond Zhao
-- Roberto Perez
-- José Vilmar Estácio de Souza
-- VS Code team
-- Amnon Freidlin
+- Isidor Nikolic for driving accessibility initiatives
+- Kai Maetzel for giving Megan and the team the green light to work on and prioritize accessibility issues
+- Daniel Imms for your knowledge, expertise, and ideas in this area
+- Raymond Zhao for improving the VS Code site's accessibility
+- Roberto Perez for your expertise and insights
+- José Vilmar Estácio de Souza for creating issues and testing features
+- VS Code team for striving to create an accessible product
+- Amnon Freidlin for working with users to select and improve upon audio cues
 :::
 
 # References {-}
