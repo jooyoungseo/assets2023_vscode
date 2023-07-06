@@ -19,6 +19,8 @@ Accessibility is and has been a core priority for VS Code since its inception. W
 
 Among the many architectural elements of VSCode, the following, in particular, has contributed to its accessibility. First, VSCode is a cross-platform application built with the Chromium-based Electron Framework. In other words, VSCode is an application built using web technologies, which gives it the flexibility to follow web accessibility guidelines and respond to the accessibility of various screen readers and assistive technologies regardless of the operating system. Second, Monaco, the primary editor of VSCode, has its own screenreader compatibility mode, which is designed to be selectively turned on and off depending on the user's intent. Third, Microsoft's xterm.js terminal, used by VSCode, also provides a separate screen reader accessibility switch in accordance with the Web Accessibility Guidelines. Finally, VSCode is an open-source project where anyone can suggest and fix features on GitHub, and a daily insiders version is built so that real users can quickly use the alpha version and provide feedback to the developers, which in turn leads to a higher quality, user-centered stable version.
 
+* mention some VSCode-based accessibility projects, such as code walk.
+
 ## Biographies of the Authors
 
 The first author of this paper is blind with only light perception, currently working as an assistant professor in the School of Information Sciences at the University of Illinois at Urbana-Champaign. At the university, he teaches introductory data science courses using R and Python to undergraduate and graduate students. As a lifelong non-visual programmer, he has experience with a variety of IDEs, including Visual Studio, Eclipse, and Net Bean, including text editors such as Emacs/Emacspeak, VIM, and NotePad++, on Linux, Mac, and Windows operating systems, using a variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver, and Orca) and refreshable braille displays. He is a certified professional in accessibility core competencies (CPACC) from the International Association of Accessibility Professionals and has contributed code to a number of open-source data science projects to improve screen reader accessibility, including RStudio IDE Server and the web-based data science dashboard Shiny, reproducible technical publishing systems (e.g., R Markdown, bookdown, and Quarto), and the data table package gt. He is also a member of Program-L, a community of blind programmers where blind programmers help and support each other. In this community, he has experienced first-hand the challenges that blind programmers face in using IDEs and how they overcome them by interacting with other blind programmers and participating in discussions. To improve these community-wide challenges, he created his first issue on the Microsoft VSCode public GitHub site on May 31, 2020, and has since created a total of 164 contributions (87 issues; 76 post comments and mentions; 1 pull request) to actively suggest usability improvements for blind programmers in VSCode and interact with other open source developers (see Appendix @sec-gh_log for more details).
@@ -83,6 +85,8 @@ For example, the terminal accessibility help menu contains helpful information f
 
 ## Copilot and Inline Suggestions
 
+   LLM, AI, Copilot, good potentials for people with disabilities, but not accessible. JooYoung requested an early access
+
 * Recognizing the power of AI, JooYoung was excited to try out Copilot. He was disappointed to find that the inline suggestions were not accessible. He created an issue and Megan fixed it.
 
 ## Accessibility Testing Initiative
@@ -104,15 +108,7 @@ Considering accessibility early on in a feature's implementation is critical so 
 # Acknowledgments
 
 ::: acks
-We thank ...
-- Isidor Nikolic for driving accessibility initiatives
-- Kai Maetzel for giving Megan and the team the green light to work on and prioritize accessibility issues
-- Daniel Imms for your knowledge, expertise, and ideas in this area
-- Raymond Zhao for improving the VS Code site's accessibility
-- Roberto Perez for your expertise and insights
-- José Vilmar Estácio de Souza for creating issues and testing features
-- VS Code team for striving to create an accessible product
-- Amnon Freidlin for working with users to select and improve upon audio cues
+We thank VS Code team for striving to create an accessible product, Isidor Nikolic for driving accessibility initiatives, Kai Maetzel for giving Megan and the team the green light to work on and prioritize accessibility issues, Daniel Imms for your knowledge, expertise, and ideas in this area, Raymond Zhao for improving the VS Code site's accessibility, Roberto Perez for your expertise and insights, José Vilmar Estácio de Souza for creating issues and testing features, Amnon Freidlin for working with users to select and improve upon audio cues
 :::
 
 # References {-}
