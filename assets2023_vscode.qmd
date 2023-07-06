@@ -108,6 +108,7 @@ Considering accessibility early on in a feature's implementation is critical so 
 # Acknowledgments
 
 ::: acks
+
 We thank the VS Code team for their efforts to create an accessible product, Isidor Nikolic for his accessibility initiatives and improvements, Kai Maetzel for his commitment to and support of accessibility efforts, Daniel Imms for his knowledge, expertise, and ideas in this area, Raymond Zhao for his improvements to VS Code site's accessibility, Roberto Perez for his expertise and insights, José Vilmar Estácio de Souza for his issue creation and feature testing, and Amnon Freidlin for his collaboration with users to select and improve upon audio cues. 
 
 :::
@@ -120,7 +121,7 @@ We thank the VS Code team for their efforts to create an accessible product, Isi
 
 # Appendix
 
-# Appendix: VSCodeAccessibility Discussions on GitHub {#sec-gh_log}
+# Appendix: VSCode Accessibility Discussions on GitHub {#sec-gh_log}
 
 The following are JooYoung's GitHub contributions, including issues, pull requests, comments, and mentions, related to accessibility up to the time of this paper's submission.
 
