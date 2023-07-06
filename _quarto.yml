@@ -11,10 +11,11 @@ format:
     include-in-header:
       text: |
         % !TEX program = xelatex
-
-# use keep-tex to cause quarto to generate a .tex file
-# which you can eventually use with TAPS
-keep-tex: true
+    # use keep-tex to cause quarto to generate a .tex file
+    # which you can eventually use with TAPS
+    keep-tex: true
+  acm-html:
+    output-file: index.html
 
 bibliography: bibliography.bib
 
