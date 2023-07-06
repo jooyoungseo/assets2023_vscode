@@ -10,9 +10,9 @@
   "Lua.runtime.version": "Lua 5.3",
   "Lua.workspace.checkThirdParty": false,
   "Lua.workspace.library": [
-    "C:\\Users\\jseo1005\\scoop\\apps\\quarto\\current\\share\\lua-types"
+    "C:\\Users\\jseo1005\\scoop\\apps\\quarto-prerelease\\current\\share\\lua-types"
   ],
-  "Lua.runtime.plugin": "C:\\Users\\jseo1005\\scoop\\apps\\quarto\\current\\share\\lua-plugin\\plugin.lua",
+  "Lua.runtime.plugin": "C:\\Users\\jseo1005\\scoop\\apps\\quarto-prerelease\\current\\share\\lua-plugin\\plugin.lua",
   "Lua.completion.showWord": "Disable",
   "Lua.completion.keywordSnippet": "Both",
   "Lua.diagnostics.disable": [

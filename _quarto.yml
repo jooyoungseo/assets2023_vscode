@@ -121,4 +121,4 @@ acm-metadata:
   #   description: teaser description    
 
 abstract: |
-  In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insider's releases we've created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments.
+  In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insider's releases we've created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments. Accessible version of this article can be found at https://bit.ly/vscodea11y

@@ -1,285 +1,1068 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="quarto-1.4.176" />
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="JooYoung Seo" />
+    <meta name="author" content="Megan Rogge" />
 
-<meta name="author" content="JooYoung Seo">
-<meta name="author" content="Megan Rogge">
+    <title>
+      Coding Non-visually in Visual Studio Code: Collaboration Towards
+      Accessible Development Environment for Blind Programmers
+    </title>
+    <style>
+      code {
+        white-space: pre-wrap;
+      }
+      span.smallcaps {
+        font-variant: small-caps;
+      }
+      div.columns {
+        display: flex;
+        gap: min(4vw, 1.5em);
+      }
+      div.column {
+        flex: auto;
+        overflow-x: auto;
+      }
+      div.hanging-indent {
+        margin-left: 1.5em;
+        text-indent: -1.5em;
+      }
+      ul.task-list {
+        list-style: none;
+      }
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode {
+        white-space: pre;
+        position: relative;
+      }
+      pre > code.sourceCode > span {
+        display: inline-block;
+        line-height: 1.25;
+      }
+      pre > code.sourceCode > span:empty {
+        height: 1.2em;
+      }
+      .sourceCode {
+        overflow: visible;
+      }
+      code.sourceCode > span {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      div.sourceCode {
+        margin: 1em 0;
+      }
+      pre.sourceCode {
+        margin: 0;
+      }
+      @media screen {
+        div.sourceCode {
+          overflow: auto;
+        }
+      }
+      @media print {
+        pre > code.sourceCode {
+          white-space: pre-wrap;
+        }
+        pre > code.sourceCode > span {
+          text-indent: -5em;
+          padding-left: 5em;
+        }
+      }
+      pre.numberSource code {
+        counter-reset: source-line 0;
+      }
+      pre.numberSource code > span {
+        position: relative;
+        left: -4em;
+        counter-increment: source-line;
+      }
+      pre.numberSource code > span > a:first-child::before {
+        content: counter(source-line);
+        position: relative;
+        left: -1em;
+        text-align: right;
+        vertical-align: baseline;
+        border: none;
+        display: inline-block;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: 0 4px;
+        width: 4em;
+      }
+      pre.numberSource {
+        margin-left: 3em;
+        padding-left: 4px;
+      }
+      div.sourceCode {
+      }
+      @media screen {
+        pre > code.sourceCode > span > a:first-child::before {
+          text-decoration: underline;
+        }
+      }
+      /* CSS for citations */
+      div.csl-bib-body {
+      }
+      div.csl-entry {
+        clear: both;
+      }
+      .hanging-indent div.csl-entry {
+        margin-left: 2em;
+        text-indent: -2em;
+      }
+      div.csl-left-margin {
+        min-width: 2em;
+        float: left;
+      }
+      div.csl-right-inline {
+        margin-left: 2em;
+        padding-left: 1em;
+      }
+      div.csl-indent {
+        margin-left: 2em;
+      }
+    </style>
 
-<title>Coding Non-visually in Visual Studio Code: Collaboration Towards Accessible Development Environment for Blind Programmers</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+    <script src="assets2023_vscode_files/libs/clipboard/clipboard.min.js"></script>
+    <script src="assets2023_vscode_files/libs/quarto-html/quarto.js"></script>
+    <script src="assets2023_vscode_files/libs/quarto-html/popper.min.js"></script>
+    <script src="assets2023_vscode_files/libs/quarto-html/tippy.umd.min.js"></script>
+    <script src="assets2023_vscode_files/libs/quarto-html/anchor.min.js"></script>
+    <link
+      href="assets2023_vscode_files/libs/quarto-html/tippy.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets2023_vscode_files/libs/quarto-html/quarto-syntax-highlighting.css"
+      rel="stylesheet"
+      id="quarto-text-highlighting-styles"
+    />
+    <script src="assets2023_vscode_files/libs/bootstrap/bootstrap.min.js"></script>
+    <link
+      href="assets2023_vscode_files/libs/bootstrap/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets2023_vscode_files/libs/bootstrap/bootstrap.min.css"
+      rel="stylesheet"
+      id="quarto-bootstrap"
+      data-mode="light"
+    />
+  </head>
 
+  <body>
+    <div
+      id="quarto-content"
+      class="page-columns page-rows-contents page-layout-article"
+    >
+      <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+          <h2 id="toc-title">Table of contents</h2>
 
-<script src="assets2023_vscode_files/libs/clipboard/clipboard.min.js"></script>
-<script src="assets2023_vscode_files/libs/quarto-html/quarto.js"></script>
-<script src="assets2023_vscode_files/libs/quarto-html/popper.min.js"></script>
-<script src="assets2023_vscode_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="assets2023_vscode_files/libs/quarto-html/anchor.min.js"></script>
-<link href="assets2023_vscode_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="assets2023_vscode_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="assets2023_vscode_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="assets2023_vscode_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="assets2023_vscode_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-
-
-</head>
-
-<body>
-
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">2</span> Background</a>
-  <ul class="collapse">
-  <li><a href="#sec-vscode_a11y" id="toc-sec-vscode_a11y" class="nav-link" data-scroll-target="#sec-vscode_a11y"><span class="header-section-number">2.1</span> Visual Studio Code and Accessibility</a></li>
-  <li><a href="#biographies-of-the-authors" id="toc-biographies-of-the-authors" class="nav-link" data-scroll-target="#biographies-of-the-authors"><span class="header-section-number">2.2</span> Biographies of the Authors</a></li>
-  <li><a href="#collaboration-methods" id="toc-collaboration-methods" class="nav-link" data-scroll-target="#collaboration-methods"><span class="header-section-number">2.3</span> Collaboration Methods</a></li>
-  </ul></li>
-  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies"><span class="header-section-number">3</span> Case Studies</a>
-  <ul class="collapse">
-  <li><a href="#terminal-buffer" id="toc-terminal-buffer" class="nav-link" data-scroll-target="#terminal-buffer"><span class="header-section-number">3.1</span> Terminal Buffer</a></li>
-  <li><a href="#git-diff-and-audio-cues" id="toc-git-diff-and-audio-cues" class="nav-link" data-scroll-target="#git-diff-and-audio-cues"><span class="header-section-number">3.2</span> Git Diff and Audio Cues</a></li>
-  <li><a href="#verbosity-settings-help-menus" id="toc-verbosity-settings-help-menus" class="nav-link" data-scroll-target="#verbosity-settings-help-menus"><span class="header-section-number">3.3</span> Verbosity Settings, Help Menus</a></li>
-  <li><a href="#copilot-and-inline-suggestions" id="toc-copilot-and-inline-suggestions" class="nav-link" data-scroll-target="#copilot-and-inline-suggestions"><span class="header-section-number">3.4</span> Copilot and Inline Suggestions</a></li>
-  <li><a href="#accessibility-testing-initiative" id="toc-accessibility-testing-initiative" class="nav-link" data-scroll-target="#accessibility-testing-initiative"><span class="header-section-number">3.5</span> Accessibility Testing Initiative</a></li>
-  </ul></li>
-  <li><a href="#discussion-and-conclusion" id="toc-discussion-and-conclusion" class="nav-link" data-scroll-target="#discussion-and-conclusion"><span class="header-section-number">4</span> Discussion and Conclusion</a></li>
-  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments"><span class="header-section-number">5</span> Acknowledgments</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix"><span class="header-section-number">6</span> Appendix</a></li>
-  <li><a href="#sec-gh_log" id="toc-sec-gh_log" class="nav-link" data-scroll-target="#sec-gh_log"><span class="header-section-number">7</span> Appendix: VSCodeAccessibility Discussions on GitHub</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (acm)</a></li></ul></div></nav>
-</div>
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Coding Non-visually in Visual Studio Code: Collaboration Towards Accessible Development Environment for Blind Programmers</h1>
-</div>
-
-
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Authors</div>
-  <div class="quarto-title-meta-heading">Affiliations</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">JooYoung Seo <a href="https://orcid.org/0000-0002-4064-6012" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            School of Information Sciences, University of Illinois at Urbana-Champaign
-          </p>
+          <ul>
+            <li>
+              <a
+                href="#introduction"
+                id="toc-introduction"
+                class="nav-link active"
+                data-scroll-target="#introduction"
+                ><span class="header-section-number">1</span> Introduction</a
+              >
+            </li>
+            <li>
+              <a
+                href="#background"
+                id="toc-background"
+                class="nav-link"
+                data-scroll-target="#background"
+                ><span class="header-section-number">2</span> Background</a
+              >
+              <ul class="collapse">
+                <li>
+                  <a
+                    href="#sec-vscode_a11y"
+                    id="toc-sec-vscode_a11y"
+                    class="nav-link"
+                    data-scroll-target="#sec-vscode_a11y"
+                    ><span class="header-section-number">2.1</span> Visual
+                    Studio Code and Accessibility</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#biographies-of-the-authors"
+                    id="toc-biographies-of-the-authors"
+                    class="nav-link"
+                    data-scroll-target="#biographies-of-the-authors"
+                    ><span class="header-section-number">2.2</span> Biographies
+                    of the Authors</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#collaboration-methods"
+                    id="toc-collaboration-methods"
+                    class="nav-link"
+                    data-scroll-target="#collaboration-methods"
+                    ><span class="header-section-number">2.3</span>
+                    Collaboration Methods</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="#case-studies"
+                id="toc-case-studies"
+                class="nav-link"
+                data-scroll-target="#case-studies"
+                ><span class="header-section-number">3</span> Case Studies</a
+              >
+              <ul class="collapse">
+                <li>
+                  <a
+                    href="#terminal-buffer"
+                    id="toc-terminal-buffer"
+                    class="nav-link"
+                    data-scroll-target="#terminal-buffer"
+                    ><span class="header-section-number">3.1</span> Terminal
+                    Buffer</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#git-diff-and-audio-cues"
+                    id="toc-git-diff-and-audio-cues"
+                    class="nav-link"
+                    data-scroll-target="#git-diff-and-audio-cues"
+                    ><span class="header-section-number">3.2</span> Git Diff and
+                    Audio Cues</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#verbosity-settings-help-menus"
+                    id="toc-verbosity-settings-help-menus"
+                    class="nav-link"
+                    data-scroll-target="#verbosity-settings-help-menus"
+                    ><span class="header-section-number">3.3</span> Verbosity
+                    Settings, Help Menus</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#copilot-and-inline-suggestions"
+                    id="toc-copilot-and-inline-suggestions"
+                    class="nav-link"
+                    data-scroll-target="#copilot-and-inline-suggestions"
+                    ><span class="header-section-number">3.4</span> Copilot and
+                    Inline Suggestions</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#accessibility-testing-initiative"
+                    id="toc-accessibility-testing-initiative"
+                    class="nav-link"
+                    data-scroll-target="#accessibility-testing-initiative"
+                    ><span class="header-section-number">3.5</span>
+                    Accessibility Testing Initiative</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="#discussion-and-conclusion"
+                id="toc-discussion-and-conclusion"
+                class="nav-link"
+                data-scroll-target="#discussion-and-conclusion"
+                ><span class="header-section-number">4</span> Discussion and
+                Conclusion</a
+              >
+            </li>
+            <li>
+              <a
+                href="#acknowledgments"
+                id="toc-acknowledgments"
+                class="nav-link"
+                data-scroll-target="#acknowledgments"
+                ><span class="header-section-number">5</span> Acknowledgments</a
+              >
+            </li>
+            <li>
+              <a
+                href="#references"
+                id="toc-references"
+                class="nav-link"
+                data-scroll-target="#references"
+                >References</a
+              >
+            </li>
+            <li>
+              <a
+                href="#appendix"
+                id="toc-appendix"
+                class="nav-link"
+                data-scroll-target="#appendix"
+                ><span class="header-section-number">6</span> Appendix</a
+              >
+            </li>
+            <li>
+              <a
+                href="#sec-gh_log"
+                id="toc-sec-gh_log"
+                class="nav-link"
+                data-scroll-target="#sec-gh_log"
+                ><span class="header-section-number">7</span> Appendix:
+                VSCodeAccessibility Discussions on GitHub</a
+              >
+            </li>
+          </ul>
+          <div class="quarto-alternate-formats">
+            <h2>Other Formats</h2>
+            <ul>
+              <li>
+                <a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (acm)</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-      <div class="quarto-title-meta-contents">
-    <p class="author">Megan Rogge </p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Microsoft
+      <main class="content" id="quarto-document-content">
+        <header id="title-block-header" class="quarto-title-block default">
+          <div class="quarto-title">
+            <h1 class="title">
+              Coding Non-visually in Visual Studio Code: Collaboration Towards
+              Accessible Development Environment for Blind Programmers
+            </h1>
+          </div>
+
+          <div class="quarto-title-meta-author">
+            <div class="quarto-title-meta-heading">Authors</div>
+            <div class="quarto-title-meta-heading">Affiliations</div>
+
+            <div class="quarto-title-meta-contents">
+              <p class="author">
+                JooYoung Seo
+                <a
+                  href="https://orcid.org/0000-0002-4064-6012"
+                  class="quarto-title-author-orcid"
+                >
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="
+                /></a>
+              </p>
+            </div>
+            <div class="quarto-title-meta-contents">
+              <p class="affiliation">
+                School of Information Sciences, University of Illinois at
+                Urbana-Champaign
+              </p>
+            </div>
+            <div class="quarto-title-meta-contents">
+              <p class="author">Megan Rogge</p>
+            </div>
+            <div class="quarto-title-meta-contents">
+              <p class="affiliation">Microsoft</p>
+            </div>
+          </div>
+
+          <div class="quarto-title-meta"></div>
+
+          <div>
+            <div class="abstract">
+              <div class="abstract-title">Abstract</div>
+              <p>
+                In this paper, we will showcase a few examples of how blind and
+                sighted developers have been working together to make Visual
+                Studio Code more accessible. Through our collaboration, which is
+                evident in the GitHub issues, pull requests, review process, and
+                insider’s releases we’ve created together over the past few
+                months, we hope to help other open source developers use these
+                methods to create more accessible development environments.
+                Accessible version of this article can be found at
+                https://bit.ly/vscodea11y
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <section id="introduction" class="level1" data-number="1">
+          <h1 data-number="1">
+            <span class="header-section-number">1</span> Introduction
+          </h1>
+          <p>
+            An integrated development environment (IDE) is an application that
+            conveniently provides essential functions for the entire programming
+            process, including source editing, compiling and interpreting, and
+            debugging. IDEs have become an essential tool for not only software
+            developers, but also STEM engineers and data scientists in many
+            fields to efficiently manage their computing environments. However,
+            blind developers<a
+              href="#fn1"
+              class="footnote-ref"
+              id="fnref1"
+              role="doc-noteref"
+              ><sup>1</sup></a
+            >
+            are not able to take advantage of the many features that graphical
+            user interface (GUI)-based IDEs offer. For example, syntax
+            highlighting, code autocompletion and autosuggestion, diagnostics
+            and linting, variable watches and breakpoints are underutilized even
+            among experienced blind programmers, and many blind developers are
+            still working manually with simple text like Notepad, along with
+            runtime and compile terminals. Behind this problem are intertwined
+            issues of accessibility and learnability. Because different IDEs use
+            different architectures and have different levels of accessibility
+            compliance, blind developers face a new learning curve each time
+            they use an IDE. Blind developers also face the additional challenge
+            of learning the non-visual workaround of accessing an IDE with a
+            screen reader. Although there is a community of blind programmers
+            called Program-L that helps each other with their struggles, IDEs
+            remain a daunting barrier for blind people.
           </p>
-      </div>
-    </div>
-
-<div class="quarto-title-meta">
-
-      
-  
-    
-  </div>
-  
-<div>
-  <div class="abstract">
-    <div class="abstract-title">Abstract</div>
-    <p>In this paper, we will showcase a few examples of how blind and sighted developers have been working together to make Visual Studio Code more accessible. Through our collaboration, which is evident in the GitHub issues, pull requests, review process, and insider’s releases we’ve created together over the past few months, we hope to help other open source developers use these methods to create more accessible development environments.</p>
-  </div>
-</div>
-
-</header>
-
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>An integrated development environment (IDE) is an application that conveniently provides essential functions for the entire programming process, including source editing, compiling and interpreting, and debugging. IDEs have become an essential tool for not only software developers, but also STEM engineers and data scientists in many fields to efficiently manage their computing environments. However, blind developers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> are not able to take advantage of the many features that graphical user interface (GUI)-based IDEs offer. For example, syntax highlighting, code autocompletion and autosuggestion, diagnostics and linting, variable watches and breakpoints are underutilized even among experienced blind programmers, and many blind developers are still working manually with simple text like Notepad, along with runtime and compile terminals. Behind this problem are intertwined issues of accessibility and learnability. Because different IDEs use different architectures and have different levels of accessibility compliance, blind developers face a new learning curve each time they use an IDE. Blind developers also face the additional challenge of learning the non-visual workaround of accessing an IDE with a screen reader. Although there is a community of blind programmers called Program-L that helps each other with their struggles, IDEs remain a daunting barrier for blind people.</p>
-<p>These difficulties are a major socio-technical barrier to blind developers reaching their full potential in the computing field and to social and professional participation. From the perspective of the social model, which recognizes that an individual’s disability may stem from structures and cultures that sociotechnically limit their access rather than from physical, sensory, cognitive, or emotional issues, we can see that IDE accessibility issues are no longer a group-specific problem that blind people must endure, but a collective task for the technology community to reduce barriers together. Specifically, to address these issues, blind and sighted developers need to work together to understand the challenges that blind developers face in using IDEs and then collaboratively find ways to address those challenges.</p>
-<p>This paper is the empirical product of blind and sighted developers who have thought deeply about these issues and actively collaborated. We describe how the first author, who is blind, and the second author, who is sighted, have been working together to make the open source IDE Visual Studio Code (VSCode) non-visually accessible and what specific accessibility features have been implemented as a result of our collaboration.</p>
-<p>In the following sections, we start with some background on how our collaboration began, then present our methods and deliverables. Finally, we’ll share some insights from our collaboration.</p>
-</section>
-<section id="background" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Background</h1>
-<section id="sec-vscode_a11y" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sec-vscode_a11y"><span class="header-section-number">2.1</span> Visual Studio Code and Accessibility</h2>
-<p>Visual Studio Code is a lightweight, free, and powerful open-source code editor<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> which runs on the desktop and on the web. It is available for Windows, macOS, and Linux. It has built-in support for JavaScript, TypeScript, and Node.js and a rich ecosystem of extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET).</p>
-<p>Accessibility is and has been a core priority for VS Code since its inception. Without a screen reader user on the team, VS Code relies heavily upon the tremendous contributions of community members for insight and direction.</p>
-<p>Among the many architectural elements of VSCode, the following, in particular, has contributed to its accessibility. First, VSCode is a cross-platform application built with the Chromium-based Electron Framework. In other words, VSCode is an application built using web technologies, which gives it the flexibility to follow web accessibility guidelines and respond to the accessibility of various screen readers and assistive technologies regardless of the operating system. Second, Monaco, the primary editor of VSCode, has its own screenreader compatibility mode, which is designed to be selectively turned on and off depending on the user’s intent. Third, Microsoft’s xterm.js terminal, used by VSCode, also provides a separate screen reader accessibility switch in accordance with the Web Accessibility Guidelines. Finally, VSCode is an open-source project where anyone can suggest and fix features on GitHub, and a daily insiders version is built so that real users can quickly use the alpha version and provide feedback to the developers, which in turn leads to a higher quality, user-centered stable version.</p>
-</section>
-<section id="biographies-of-the-authors" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="biographies-of-the-authors"><span class="header-section-number">2.2</span> Biographies of the Authors</h2>
-<p>The first author of this paper is blind with only light perception, currently working as an assistant professor in the School of Information Sciences at the University of Illinois at Urbana-Champaign. At the university, he teaches introductory data science courses using R and Python to undergraduate and graduate students. As a lifelong non-visual programmer, he has experience with a variety of IDEs, including Visual Studio, Eclipse, and Net Bean, including text editors such as Emacs/Emacspeak, VIM, and NotePad++, on Linux, Mac, and Windows operating systems, using a variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver, and Orca) and refreshable braille displays. He is a certified professional in accessibility core competencies (CPACC) from the International Association of Accessibility Professionals and has contributed code to a number of open-source data science projects to improve screen reader accessibility, including RStudio IDE Server and the web-based data science dashboard Shiny, reproducible technical publishing systems (e.g., R Markdown, bookdown, and Quarto), and the data table package gt. He is also a member of Program-L, a community of blind programmers where blind programmers help and support each other. In this community, he has experienced first-hand the challenges that blind programmers face in using IDEs and how they overcome them by interacting with other blind programmers and participating in discussions. To improve these community-wide challenges, he created his first issue on the Microsoft VSCode public GitHub site on May 31, 2020, and has since created a total of 164 contributions (87 issues; 76 post comments and mentions; 1 pull request) to actively suggest usability improvements for blind programmers in VSCode and interact with other open source developers (see Appendix <a href="#sec-gh_log">Section&nbsp;7</a> for more details).</p>
-<p>The second author is a VS Code software engineer. She has worked on the product since graduating from the University of North Carolina at Chapel Hill in 2020 with highest distinction and highest honors for her research and work with Dr.&nbsp;Gary Bishop on semi-automated gaming for users with a wide range of disablities. About 10 months ago, Megan requested to take over responsibility for the product’s accessibility. Since then, she has been working closely with JooYoung and the community to understand accessibility issues and collaborate on solutions.</p>
-</section>
-<section id="collaboration-methods" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="collaboration-methods"><span class="header-section-number">2.3</span> Collaboration Methods</h2>
-<p>JooYoung and Megan communicated issues via GitHub asynchronously for a few weeks before the two agreed that regular meetings might be a more efficient and productive approach. JooYoung’s ideas and insights paired well with Megan’s willingness to learn and drive to improve the product’s accessibility.</p>
-<p>During each meeting, JooYoung shared his screen and asked questions or offered suggestions, while Megan offered insight, asked questions, and took notes about bugs or features to be addressed.</p>
-<p>These meetings allowed Megan to learn how JooYoung uses VS Code and helped him understand components of the product that might otherwise have been confusing or not discoverable.</p>
-<p>The asynchronous communication on Github and via email continued; Megan would often send a follow up email summarizing the findings of their meetings before sharing it with the whole team and JooYoung would comment on the resultant issues if she missed anything or when testing the fixes.</p>
-</section>
-</section>
-<section id="case-studies" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Case Studies</h1>
-<p>While nearly all VS Code accessibility fixes and features within the past year are products of this collaboration, below are several of the highlights.</p>
-<section id="terminal-buffer" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="terminal-buffer"><span class="header-section-number">3.1</span> Terminal Buffer</h2>
-<p>As mentioned in <a href="#sec-vscode_a11y">Section&nbsp;2.1</a>, xterm.js, which is used as the terminal UI in VSCode, has a screen-reader accessibility mode that allows blind people to access the output of the terminal. However, there was a gap between simply being able to access information (accessibility) and being able to use it conveniently (usability), and this had led to ongoing complaints about the VSCode terminal among blind programmers, especially in Program-L. Here’s how it works. Suppose you type and execute the command <code>echo hello; echo world;</code> in the terminal, you will see two lines of output on the terminal screen: <code>hello</code> and <code>world</code>. The existing accessibility mode of xterm.js outputted this content in screen reader speech using aria-live alert, and provided the ability to review the terminal output history line by line with the <code>Ctrl+UpArrow</code> and <code>Ctrl+DownArrow</code> keys. If the output is short and simple, this approach is fine. However, if the output is long, with complex error messages or computational results, a quick flash message through text-to-speech is not going to capture that much information in the human working memory. Another problem is that the <code>Ctrl+Up/DownArrow</code> navigation keys, which review the terminal history line by line, bundle the entire contents of the currently focused line into a single object and pass it to the screen reader, making it difficult to examine the terminal contents character by character or word by word. The blind user had to change the reading mode with the screen reader’s virtual cursor (AKA, browse mode in NVDA; QuickNav mode in VoiceOver) to review the terminal content on a character-by-character and word-by-word basis. After the review, they (and we) had to turn off the screen reader’s virtual cursor and revert to forms mode (focus mode in NVDA; QuickNav off in VoiceOver) to resume terminal input, causing considerable inconvenience and hassle.</p>
-<p>JooYoung has started a conversation on the official Microsoft VSCode GitHub page to raise awareness of these issues and suggest new solutions (<a href="https://github.com/microsoft/vscode/issues/98918">microsoft/vscode#98918: Terminal output div container should be more accessible for screen readers</a>).</p>
-<p>Megan worked on terminal shell integration, a feature which enables VS Code to understand what’s going on in the terminal. This allows a user to navigate easily between commands, copy command output, and more. JooYoung shared his screen, tested the feature, and pointed out that the actual terminal buffer was still inaccessible for screen reader users - since it could not be navigated using arrow keys. He suggested that the output view provides a more accessible experience, so Megan discussed this with a colleague and determined that the same underlying component should be used for the terminal. This allowed the formerly “black box” of the terminal buffer to be navigable via arrow keys for screen reader users. JooYoung suggested that command navigation provided by shell integration could also be used in this accessible buffer and Megan implemented that as well.</p>
-<p>More specifically, he proposed replacing the terminal output with a text editor buffer that allowed for standard arrow-key navigation. This process took over a year and a lot of technical trial and error and collaborative testing. For example, we started with a remarkup to redirect the terminal output web container, which was initially designated as “list”, to the aria “document” or “textbox” landmarks, but were unable to achieve satisfactory results due to varying levels of screen reader and platform support for aria. Next, we remodeled the terminal output into a text area with “contenteditable” and “readonly” attributes, but this was not very compatible with the screen reader’s speech buffer. Finally, we created a separate accessible terminal buffer by passing the terminal output to VSCode’s native Monaco editor, which is guaranteed accessible, leading to a successful feature that ensures satisfactory accessibility and usability on any operating system or screen reader. This terminal buffer feature was officially released in VSCode stable version xx and has been very well received by many users in the Program-L community.</p>
-<p>For example, with VoiceOver on, the terminal buffer is entered for a task terminal. A line with an error is focused and read by VoiceOver.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/terminal-accessible-buffer.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">VoiceOver reads “rvice.ts(2018,13: Cannot find name ‘taskSet’”</figcaption>
-</figure>
-</div>
-</section>
-<section id="git-diff-and-audio-cues" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="git-diff-and-audio-cues"><span class="header-section-number">3.2</span> Git Diff and Audio Cues</h2>
-<p>Git has been around for decades as a version control tool like SVN, but its popularity has really taken off with the rise of open-source social coding platforms based on Git, such as GitHub and GitLab. Naturally, there have been many personal and social needs for blind people to utilize Git in collaborative environments. git is originally a Unix-based command-line tool, so in terms of accessibility, blind people can use a screen reader to fully utilize Git in a terminal. However, since Git has over 100 core Git commands, and the number of possible combinations could be in the millions, using Git via the command line takes a lot of effort and time to become proficient. In response, various tools have emerged that allow you to use Git as a GUI, and VSCode is a very popular IDE that supports a collaborative environment using Git.</p>
-<p>Git provides a track changes feature that allows you to compare changes between files in an asynchronous collaborative environment, called <code>git diff</code>. Literally, the <code>git diff</code> command compares and shows the differences between a file and a file, or between a commit and a commit, with newly added lines in green and + and removed lines in red and - prefixed.</p>
-<p>VSCode had always provided an accessible <code>git diff</code> function for screen reader users. With the files or commits users want to compare open, pressing <code>F7</code> (Go to Next Difference) and <code>Shift+F7</code> (Go to Previous Difference) would skip to the area where the differences are, prefixing the line with the change with a + or - sign to indicate the nature of the change. Of course, this approach was fine from an accessibility standpoint, but there was room for improvement in terms of usability and convenience for blind users. For example, visual affordances like color coding and +- signs in <code>git diff</code> allowed sighted people to skim quickly, but blind people had to listen to additional speech prefixes, pronounced + (plus) and - (dash), serially and wait for information before each change. Furthermore, depending on the punctuation pronunciation settings of the screen reader, the +- sign could be omitted and delivered to the screen reader.</p>
-<p>To address this, JooYoung suggested adding non-visual, non-speech, and audible affordances to <code>git diff</code> in addition to +- signatures, so that blind people can hear and understand them easily <a href="https://github.com/microsoft/vscode/issues/147226">microsoft/vscode#147226: [Accessibility] Consider adding audio cues for diffs (added / deleted code)</a>.</p>
-<p>Audio cues are non-speech sound effects, an accessibility feature that VSCode and Microsoft’s other IDE, Visual Studio, have just begun to support, and TV Raman demonstrated their usefulness in non-visual programming many years ago when he developed Emacspeak, referring to them as earcons as an alternative to icons. For example, audio cues allow the editor to quickly recognize if the current line of code contains an error or a warning, instead of just saying “error” or “warning” verbally, the editor will read out the unique sound associated with the error or warning. These sounds can also be delivered in parallel with text-to-speech information from a screen reader, allowing blind programmers to quickly perceive the context of the code, similar to the benefits of quickly scanning code with different color coding for those who receive visual feedback on code with their eyes.</p>
-<p>JooYoung had several Zoom meetings with Megan and Microsoft’s sound designer, and through an iterative process, finalized the three audio cues used in the <code>git diff</code> context. These were the diff line Inserted sound, which is heard when something new is added (+), the diff line Deleted sound, which is heard when something existing is removed (-), and the diff line Modified sound, which is heard when something existing is modified (+-, -+).</p>
-<p>Our success came with some trial and error. For example, an early problem was that the Diff Line Inserted and Diff Line Deleted sounds had a similar range and texture, making it difficult to distinguish between them. JooYoung realized that this was a common complaint in Program-L beyond her personal experience, so she worked with the sound designer to test and finalize a sample file that was as self-explanatory as possible and didn’t interfere with the sound of screen reader speech. Of course, we had to leave the potential issue of the static audio cues we chose not being able to adequately accommodate users with hearing impairments in certain ranges as a future work in progress, but this feature greatly improved the usability of our non-visual programming.</p>
-</section>
-<section id="verbosity-settings-help-menus" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="verbosity-settings-help-menus"><span class="header-section-number">3.3</span> Verbosity Settings, Help Menus</h2>
-<p>JooYoung created issues pointing out places where minor tweaks to the order or content of an aria label could yield massive productivity improvements for screen reader users. Megan fixed some such instances and pointed team members toward others, providing guidance about best practices going forward.</p>
-<p>Megan started self hosting with a screen reader shortly after this in order to proactively identify other problems. She felt overwhelmed by the noise and noticed some content was repeated ad nauseum, so created an issue and sought the feedback of JooYoung, who suggested that screen reader verbosity settings remedy this and a similar approach could be applied to VS Code’s aria content.</p>
-<p>Additionally, JooYoung shared that while it was helpful to meet and learn about the new features via our meetings, most screen reader users did not have this luxury. Megan and her colleague, Daniel, brainstormed about a discoverable way for screen reader users to find out about terminal features. Upon terminal focus, an aria label conveyed how to access the terminal’s accessibility help menu. To reduce noise, this hint could be disabled with a verbosity setting. Since then, help menus and verbosity settings have been added for the Copilot inline and panel chat, notebook, and other features.</p>
-<p>For example, the terminal accessibility help menu contains helpful information for screen reader users such as commands to run. A screen reader user can use arrow keys to read the content line by line, character by character.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src=".\images/terminal-help-menu.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A line in the help menu is focused and VoiceOver reads “The terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:”</figcaption>
-</figure>
-</div>
-</section>
-<section id="copilot-and-inline-suggestions" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="copilot-and-inline-suggestions"><span class="header-section-number">3.4</span> Copilot and Inline Suggestions</h2>
-<ul>
-<li>Recognizing the power of AI, JooYoung was excited to try out Copilot. He was disappointed to find that the inline suggestions were not accessible. He created an issue and Megan fixed it.</li>
-</ul>
-</section>
-<section id="accessibility-testing-initiative" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="accessibility-testing-initiative"><span class="header-section-number">3.5</span> Accessibility Testing Initiative</h2>
-<p>The VS Code team tests new features at the end of every month before each release. Megan noticed that while the team tested each platform - MacOS, Linux, and Windows, they were not testing the screen reader experience. A new protocol has been established to ensure better coverage going forward; the iteration following a feature’s release, the team will test the feature using screen readers. Retroactive testing of features is currently underway to make up for this historical oversight. JooYoung’s creation of issues about old and new features alike inspired and justified this initiaive.</p>
-</section>
-</section>
-<section id="discussion-and-conclusion" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Discussion and Conclusion</h1>
-<ul>
-<li>Reflection on what we have learned from this collaboration.</li>
-</ul>
-<p>Screen reader users have unique insight into accessibility issues and provide creative solutions to technical problems. Collaborating with screen reader users improves understanding of accessibility issues (for the sighted developer) and features (for the screen reader user), increases the drive to address issues, and dramatically improves the accessibility of a product. Increased accessibility results in a better product for all. For example, while the terminal accessible buffer was designed for screen reader users, others have suggested they <a href="https://github.com/microsoft/vscode/issues/182210#issuecomment-1546733921">benefit from the feature</a>.</p>
-<ul>
-<li>What we recommend for other open-source communities for better accessibility.</li>
-</ul>
-<p>It is important to share findings so that other developers can learn and apply the knowledge to their applications. Megan and JooYoung participated in an <a href="https://learn.microsoft.com/en-us/events/vs-code-day-2023/accessibilty-in-vs-code">accessibility presentation</a> via livestream which reached 159,769 people within just the first two weeks. Additionally, JooYoung will be leading the team in a deep dive about his experience using VS Code. Megan believes getting a glimpse of JooYoung’s experience will help the team understand the importance of and challenges related to accessibility.</p>
-<p>Considering accessibility early on in a feature’s implementation is critical so that screen reader users can experience the latest technology without delay. Working closely with JooYoung, Megan has witnessed that screen reader users can be totally blocked if this is not considered or addressed properly. As such, accessibility fixes should be prioritized over most others.</p>
-</section>
-<section id="acknowledgments" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Acknowledgments</h1>
-<div class="acks">
-<p>We thank … - Isidor Nikolic - Kai Maetzel - Daniel Imms - Raymond Zhao - Roberto Perez - José Vilmar Estácio de Souza - VS Code team - Amnon Freidlin</p>
-</div>
-</section>
-<section id="references" class="level1 unnumbered">
-<h1 class="unnumbered">References</h1>
-<div id="refs" role="list">
-
-</div>
-</section>
-<section id="appendix" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Appendix</h1>
-</section>
-<section id="sec-gh_log" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Appendix: VSCodeAccessibility Discussions on GitHub</h1>
-<p>The following are JooYoung’s GitHub contributions, including issues, pull requests, comments, and mentions, related to accessibility up to the time of this paper’s submission.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--repo</span> microsoft/vscode <span class="at">--include-prs</span> <span class="at">--involves</span> jooyoungseo <span class="at">-L</span> 200</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">issue</span>   microsoft/vscode    186857  open    <span class="pp">[</span><span class="ss">Accessibility</span><span class="pp">]</span> Checkboxes are unlabeled in <span class="kw">`</span><span class="ex">Export</span> Profile...<span class="kw">`</span> bug, accessibility  2023-07-03T15:16:09Z</span>
+          <p>
+            These difficulties are a major socio-technical barrier to blind
+            developers reaching their full potential in the computing field and
+            to social and professional participation. From the perspective of
+            the social model, which recognizes that an individual’s disability
+            may stem from structures and cultures that sociotechnically limit
+            their access rather than from physical, sensory, cognitive, or
+            emotional issues, we can see that IDE accessibility issues are no
+            longer a group-specific problem that blind people must endure, but a
+            collective task for the technology community to reduce barriers
+            together. Specifically, to address these issues, blind and sighted
+            developers need to work together to understand the challenges that
+            blind developers face in using IDEs and then collaboratively find
+            ways to address those challenges.
+          </p>
+          <p>
+            This paper is the empirical product of blind and sighted developers
+            who have thought deeply about these issues and actively
+            collaborated. We describe how the first author, who is blind, and
+            the second author, who is sighted, have been working together to
+            make the open source IDE Visual Studio Code (VSCode) non-visually
+            accessible and what specific accessibility features have been
+            implemented as a result of our collaboration.
+          </p>
+          <p>
+            In the following sections, we start with some background on how our
+            collaboration began, then present our methods and deliverables.
+            Finally, we’ll share some insights from our collaboration.
+          </p>
+        </section>
+        <section id="background" class="level1" data-number="2">
+          <h1 data-number="2">
+            <span class="header-section-number">2</span> Background
+          </h1>
+          <section id="sec-vscode_a11y" class="level2" data-number="2.1">
+            <h2
+              data-number="2.1"
+              class="anchored"
+              data-anchor-id="sec-vscode_a11y"
+            >
+              <span class="header-section-number">2.1</span> Visual Studio Code
+              and Accessibility
+            </h2>
+            <p>
+              Visual Studio Code is a lightweight, free, and powerful
+              open-source code editor<a
+                href="#fn2"
+                class="footnote-ref"
+                id="fnref2"
+                role="doc-noteref"
+                ><sup>2</sup></a
+              >
+              which runs on the desktop and on the web. It is available for
+              Windows, macOS, and Linux. It has built-in support for JavaScript,
+              TypeScript, and Node.js and a rich ecosystem of extensions for
+              other languages and runtimes (such as C++, C#, Java, Python, PHP,
+              Go, .NET).
+            </p>
+            <p>
+              Accessibility is and has been a core priority for VS Code since
+              its inception. Without a screen reader user on the team, VS Code
+              relies heavily upon the tremendous contributions of community
+              members for insight and direction.
+            </p>
+            <p>
+              Among the many architectural elements of VSCode, the following, in
+              particular, has contributed to its accessibility. First, VSCode is
+              a cross-platform application built with the Chromium-based
+              Electron Framework. In other words, VSCode is an application built
+              using web technologies, which gives it the flexibility to follow
+              web accessibility guidelines and respond to the accessibility of
+              various screen readers and assistive technologies regardless of
+              the operating system. Second, Monaco, the primary editor of
+              VSCode, has its own screenreader compatibility mode, which is
+              designed to be selectively turned on and off depending on the
+              user’s intent. Third, Microsoft’s xterm.js terminal, used by
+              VSCode, also provides a separate screen reader accessibility
+              switch in accordance with the Web Accessibility Guidelines.
+              Finally, VSCode is an open-source project where anyone can suggest
+              and fix features on GitHub, and a daily insiders version is built
+              so that real users can quickly use the alpha version and provide
+              feedback to the developers, which in turn leads to a higher
+              quality, user-centered stable version.
+            </p>
+          </section>
+          <section
+            id="biographies-of-the-authors"
+            class="level2"
+            data-number="2.2"
+          >
+            <h2
+              data-number="2.2"
+              class="anchored"
+              data-anchor-id="biographies-of-the-authors"
+            >
+              <span class="header-section-number">2.2</span> Biographies of the
+              Authors
+            </h2>
+            <p>
+              The first author of this paper is blind with only light
+              perception, currently working as an assistant professor in the
+              School of Information Sciences at the University of Illinois at
+              Urbana-Champaign. At the university, he teaches introductory data
+              science courses using R and Python to undergraduate and graduate
+              students. As a lifelong non-visual programmer, he has experience
+              with a variety of IDEs, including Visual Studio, Eclipse, and Net
+              Bean, including text editors such as Emacs/Emacspeak, VIM, and
+              NotePad++, on Linux, Mac, and Windows operating systems, using a
+              variety of screen readers (e.g., JAWS, NVDA, Narrator, VoiceOver,
+              and Orca) and refreshable braille displays. He is a certified
+              professional in accessibility core competencies (CPACC) from the
+              International Association of Accessibility Professionals and has
+              contributed code to a number of open-source data science projects
+              to improve screen reader accessibility, including RStudio IDE
+              Server and the web-based data science dashboard Shiny,
+              reproducible technical publishing systems (e.g., R Markdown,
+              bookdown, and Quarto), and the data table package gt. He is also a
+              member of Program-L, a community of blind programmers where blind
+              programmers help and support each other. In this community, he has
+              experienced first-hand the challenges that blind programmers face
+              in using IDEs and how they overcome them by interacting with other
+              blind programmers and participating in discussions. To improve
+              these community-wide challenges, he created his first issue on the
+              Microsoft VSCode public GitHub site on May 31, 2020, and has since
+              created a total of 164 contributions (87 issues; 76 post comments
+              and mentions; 1 pull request) to actively suggest usability
+              improvements for blind programmers in VSCode and interact with
+              other open source developers (see Appendix
+              <a href="#sec-gh_log" class="quarto-xref">Section&nbsp;7</a> for
+              more details).
+            </p>
+            <p>
+              The second author is a VS Code software engineer. She has worked
+              on the product since graduating from the University of North
+              Carolina at Chapel Hill in 2020 with highest distinction and
+              highest honors for her research and work with Dr.&nbsp;Gary Bishop
+              on semi-automated gaming for users with a wide range of
+              disablities. About 10 months ago, Megan requested to take over
+              responsibility for the product’s accessibility. Since then, she
+              has been working closely with JooYoung and the community to
+              understand accessibility issues and collaborate on solutions.
+            </p>
+          </section>
+          <section id="collaboration-methods" class="level2" data-number="2.3">
+            <h2
+              data-number="2.3"
+              class="anchored"
+              data-anchor-id="collaboration-methods"
+            >
+              <span class="header-section-number">2.3</span> Collaboration
+              Methods
+            </h2>
+            <p>
+              JooYoung and Megan communicated issues via GitHub asynchronously
+              for a few weeks before the two agreed that regular meetings might
+              be a more efficient and productive approach. JooYoung’s ideas and
+              insights paired well with Megan’s willingness to learn and drive
+              to improve the product’s accessibility.
+            </p>
+            <p>
+              During each meeting, JooYoung shared his screen and asked
+              questions or offered suggestions, while Megan offered insight,
+              asked questions, and took notes about bugs or features to be
+              addressed.
+            </p>
+            <p>
+              These meetings allowed Megan to learn how JooYoung uses VS Code
+              and helped him understand components of the product that might
+              otherwise have been confusing or not discoverable.
+            </p>
+            <p>
+              The asynchronous communication on Github and via email continued;
+              Megan would often send a follow up email summarizing the findings
+              of their meetings before sharing it with the whole team and
+              JooYoung would comment on the resultant issues if she missed
+              anything or when testing the fixes.
+            </p>
+          </section>
+        </section>
+        <section id="case-studies" class="level1" data-number="3">
+          <h1 data-number="3">
+            <span class="header-section-number">3</span> Case Studies
+          </h1>
+          <p>
+            While nearly all VS Code accessibility fixes and features within the
+            past year are products of this collaboration, below are several of
+            the highlights.
+          </p>
+          <section id="terminal-buffer" class="level2" data-number="3.1">
+            <h2
+              data-number="3.1"
+              class="anchored"
+              data-anchor-id="terminal-buffer"
+            >
+              <span class="header-section-number">3.1</span> Terminal Buffer
+            </h2>
+            <p>
+              As mentioned in
+              <a href="#sec-vscode_a11y" class="quarto-xref">Section&nbsp;2.1</a
+              >, xterm.js, which is used as the terminal UI in VSCode, has a
+              screen-reader accessibility mode that allows blind people to
+              access the output of the terminal. However, there was a gap
+              between simply being able to access information (accessibility)
+              and being able to use it conveniently (usability), and this had
+              led to ongoing complaints about the VSCode terminal among blind
+              programmers, especially in Program-L. Here’s how it works. Suppose
+              you type and execute the command
+              <code>echo hello; echo world;</code> in the terminal, you will see
+              two lines of output on the terminal screen: <code>hello</code> and
+              <code>world</code>. The existing accessibility mode of xterm.js
+              outputted this content in screen reader speech using aria-live
+              alert, and provided the ability to review the terminal output
+              history line by line with the <code>Ctrl+UpArrow</code> and
+              <code>Ctrl+DownArrow</code> keys. If the output is short and
+              simple, this approach is fine. However, if the output is long,
+              with complex error messages or computational results, a quick
+              flash message through text-to-speech is not going to capture that
+              much information in the human working memory. Another problem is
+              that the <code>Ctrl+Up/DownArrow</code> navigation keys, which
+              review the terminal history line by line, bundle the entire
+              contents of the currently focused line into a single object and
+              pass it to the screen reader, making it difficult to examine the
+              terminal contents character by character or word by word. The
+              blind user had to change the reading mode with the screen reader’s
+              virtual cursor (AKA, browse mode in NVDA; QuickNav mode in
+              VoiceOver) to review the terminal content on a
+              character-by-character and word-by-word basis. After the review,
+              they (and we) had to turn off the screen reader’s virtual cursor
+              and revert to forms mode (focus mode in NVDA; QuickNav off in
+              VoiceOver) to resume terminal input, causing considerable
+              inconvenience and hassle.
+            </p>
+            <p>
+              JooYoung has started a conversation on the official Microsoft
+              VSCode GitHub page to raise awareness of these issues and suggest
+              new solutions (<a
+                href="https://github.com/microsoft/vscode/issues/98918"
+                >microsoft/vscode#98918: Terminal output div container should be
+                more accessible for screen readers</a
+              >).
+            </p>
+            <p>
+              Megan worked on terminal shell integration, a feature which
+              enables VS Code to understand what’s going on in the terminal.
+              This allows a user to navigate easily between commands, copy
+              command output, and more. JooYoung shared his screen, tested the
+              feature, and pointed out that the actual terminal buffer was still
+              inaccessible for screen reader users - since it could not be
+              navigated using arrow keys. He suggested that the output view
+              provides a more accessible experience, so Megan discussed this
+              with a colleague and determined that the same underlying component
+              should be used for the terminal. This allowed the formerly “black
+              box” of the terminal buffer to be navigable via arrow keys for
+              screen reader users. JooYoung suggested that command navigation
+              provided by shell integration could also be used in this
+              accessible buffer and Megan implemented that as well.
+            </p>
+            <p>
+              More specifically, he proposed replacing the terminal output with
+              a text editor buffer that allowed for standard arrow-key
+              navigation. This process took over a year and a lot of technical
+              trial and error and collaborative testing. For example, we started
+              with a remarkup to redirect the terminal output web container,
+              which was initially designated as “list”, to the aria “document”
+              or “textbox” landmarks, but were unable to achieve satisfactory
+              results due to varying levels of screen reader and platform
+              support for aria. Next, we remodeled the terminal output into a
+              text area with “contenteditable” and “readonly” attributes, but
+              this was not very compatible with the screen reader’s speech
+              buffer. Finally, we created a separate accessible terminal buffer
+              by passing the terminal output to VSCode’s native Monaco editor,
+              which is guaranteed accessible, leading to a successful feature
+              that ensures satisfactory accessibility and usability on any
+              operating system or screen reader. This terminal buffer feature
+              was officially released in VSCode stable version xx and has been
+              very well received by many users in the Program-L community.
+            </p>
+            <p>
+              For example, with VoiceOver on, the terminal buffer is entered for
+              a task terminal. A line with an error is focused and read by
+              VoiceOver (<a href="#fig-buffer" class="quarto-xref"
+                >Figure&nbsp;1</a
+              >).
+            </p>
+            <div
+              id="fig-buffer"
+              class="quarto-figure quarto-figure-center anchored"
+            >
+              <figure class="figure">
+                <p>
+                  <img
+                    src="images/terminal-accessible-buffer.png"
+                    class="img-fluid figure-img"
+                    alt="VoiceOver reads rvice.ts(2018,13: Cannot find name taskSet"
+                  />
+                </p>
+                <figcaption class="figure-caption">
+                  Figure&nbsp;1: VoiceOver reads “rvice.ts(2018,13: Cannot find
+                  name ‘taskSet’”
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+          <section
+            id="git-diff-and-audio-cues"
+            class="level2"
+            data-number="3.2"
+          >
+            <h2
+              data-number="3.2"
+              class="anchored"
+              data-anchor-id="git-diff-and-audio-cues"
+            >
+              <span class="header-section-number">3.2</span> Git Diff and Audio
+              Cues
+            </h2>
+            <p>
+              Git has been around for decades as a version control tool like
+              SVN, but its popularity has really taken off with the rise of
+              open-source social coding platforms based on Git, such as GitHub
+              and GitLab. Naturally, there have been many personal and social
+              needs for blind people to utilize Git in collaborative
+              environments. git is originally a Unix-based command-line tool, so
+              in terms of accessibility, blind people can use a screen reader to
+              fully utilize Git in a terminal. However, since Git has over 100
+              core Git commands, and the number of possible combinations could
+              be in the millions, using Git via the command line takes a lot of
+              effort and time to become proficient. In response, various tools
+              have emerged that allow you to use Git as a GUI, and VSCode is a
+              very popular IDE that supports a collaborative environment using
+              Git.
+            </p>
+            <p>
+              Git provides a track changes feature that allows you to compare
+              changes between files in an asynchronous collaborative
+              environment, called <code>git diff</code>. Literally, the
+              <code>git diff</code> command compares and shows the differences
+              between a file and a file, or between a commit and a commit, with
+              newly added lines in green and + and removed lines in red and -
+              prefixed.
+            </p>
+            <p>
+              VSCode had always provided an accessible
+              <code>git diff</code> function for screen reader users. With the
+              files or commits users want to compare open, pressing
+              <code>F7</code> (Go to Next Difference) and
+              <code>Shift+F7</code> (Go to Previous Difference) would skip to
+              the area where the differences are, prefixing the line with the
+              change with a + or - sign to indicate the nature of the change. Of
+              course, this approach was fine from an accessibility standpoint,
+              but there was room for improvement in terms of usability and
+              convenience for blind users. For example, visual affordances like
+              color coding and +- signs in <code>git diff</code> allowed sighted
+              people to skim quickly, but blind people had to listen to
+              additional speech prefixes, pronounced + (plus) and - (dash),
+              serially and wait for information before each change. Furthermore,
+              depending on the punctuation pronunciation settings of the screen
+              reader, the +- sign could be omitted and delivered to the screen
+              reader.
+            </p>
+            <p>
+              To address this, JooYoung suggested adding non-visual, non-speech,
+              and audible affordances to <code>git diff</code> in addition to +-
+              signatures, so that blind people can hear and understand them
+              easily
+              <a href="https://github.com/microsoft/vscode/issues/147226"
+                >microsoft/vscode#147226: [Accessibility] Consider adding audio
+                cues for diffs (added / deleted code)</a
+              >.
+            </p>
+            <p>
+              Audio cues are non-speech sound effects, an accessibility feature
+              that VSCode and Microsoft’s other IDE, Visual Studio, have just
+              begun to support, and TV Raman demonstrated their usefulness in
+              non-visual programming many years ago when he developed Emacspeak,
+              referring to them as earcons as an alternative to icons. For
+              example, audio cues allow the editor to quickly recognize if the
+              current line of code contains an error or a warning, instead of
+              just saying “error” or “warning” verbally, the editor will read
+              out the unique sound associated with the error or warning. These
+              sounds can also be delivered in parallel with text-to-speech
+              information from a screen reader, allowing blind programmers to
+              quickly perceive the context of the code, similar to the benefits
+              of quickly scanning code with different color coding for those who
+              receive visual feedback on code with their eyes.
+            </p>
+            <p>
+              JooYoung had several Zoom meetings with Megan and Microsoft’s
+              sound designer, and through an iterative process, finalized the
+              three audio cues used in the <code>git diff</code> context. These
+              were the diff line Inserted sound, which is heard when something
+              new is added (+), the diff line Deleted sound, which is heard when
+              something existing is removed (-), and the diff line Modified
+              sound, which is heard when something existing is modified (+-,
+              -+).
+            </p>
+            <p>
+              Our success came with some trial and error. For example, an early
+              problem was that the Diff Line Inserted and Diff Line Deleted
+              sounds had a similar range and texture, making it difficult to
+              distinguish between them. JooYoung realized that this was a common
+              complaint in Program-L beyond her personal experience, so she
+              worked with the sound designer to test and finalize a sample file
+              that was as self-explanatory as possible and didn’t interfere with
+              the sound of screen reader speech. Of course, we had to leave the
+              potential issue of the static audio cues we chose not being able
+              to adequately accommodate users with hearing impairments in
+              certain ranges as a future work in progress, but this feature
+              greatly improved the usability of our non-visual programming.
+            </p>
+          </section>
+          <section
+            id="verbosity-settings-help-menus"
+            class="level2"
+            data-number="3.3"
+          >
+            <h2
+              data-number="3.3"
+              class="anchored"
+              data-anchor-id="verbosity-settings-help-menus"
+            >
+              <span class="header-section-number">3.3</span> Verbosity Settings,
+              Help Menus
+            </h2>
+            <p>
+              JooYoung created issues pointing out places where minor tweaks to
+              the order or content of an aria label could yield massive
+              productivity improvements for screen reader users. Megan fixed
+              some such instances and pointed team members toward others,
+              providing guidance about best practices going forward.
+            </p>
+            <p>
+              Megan started self hosting with a screen reader shortly after this
+              in order to proactively identify other problems. She felt
+              overwhelmed by the noise and noticed some content was repeated ad
+              nauseum, so created an issue and sought the feedback of JooYoung,
+              who suggested that screen reader verbosity settings remedy this
+              and a similar approach could be applied to VS Code’s aria content.
+            </p>
+            <p>
+              Additionally, JooYoung shared that while it was helpful to meet
+              and learn about the new features via our meetings, most screen
+              reader users did not have this luxury. Megan and her colleague,
+              Daniel, brainstormed about a discoverable way for screen reader
+              users to find out about terminal features. Upon terminal focus, an
+              aria label conveyed how to access the terminal’s accessibility
+              help menu. To reduce noise, this hint could be disabled with a
+              verbosity setting. Since then, help menus and verbosity settings
+              have been added for the Copilot inline and panel chat, notebook,
+              and other features.
+            </p>
+            <p>
+              For example, the terminal accessibility help menu contains helpful
+              information for screen reader users such as commands to run (<a
+                href="#fig-help"
+                class="quarto-xref"
+                >Figure&nbsp;2</a
+              >). A screen reader user can use arrow keys to read the content
+              line by line, character by character.
+            </p>
+            <div
+              id="fig-help"
+              class="quarto-figure quarto-figure-center anchored"
+            >
+              <figure class="figure">
+                <p>
+                  <img
+                    src="images/terminal-help-menu.png"
+                    class="img-fluid figure-img"
+                    alt="A line in the help menu is focused and VoiceOver reads The terminal has
+a feature called shell integration that offers an enhanced experience
+and provides useful commands for screen readers such as:"
+                  />
+                </p>
+                <figcaption class="figure-caption">
+                  Figure&nbsp;2: A line in the help menu is focused and
+                  VoiceOver reads “The terminal has a feature called shell
+                  integration that offers an enhanced experience and provides
+                  useful commands for screen readers such as:”
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+          <section
+            id="copilot-and-inline-suggestions"
+            class="level2"
+            data-number="3.4"
+          >
+            <h2
+              data-number="3.4"
+              class="anchored"
+              data-anchor-id="copilot-and-inline-suggestions"
+            >
+              <span class="header-section-number">3.4</span> Copilot and Inline
+              Suggestions
+            </h2>
+            <ul>
+              <li>
+                Recognizing the power of AI, JooYoung was excited to try out
+                Copilot. He was disappointed to find that the inline suggestions
+                were not accessible. He created an issue and Megan fixed it.
+              </li>
+            </ul>
+          </section>
+          <section
+            id="accessibility-testing-initiative"
+            class="level2"
+            data-number="3.5"
+          >
+            <h2
+              data-number="3.5"
+              class="anchored"
+              data-anchor-id="accessibility-testing-initiative"
+            >
+              <span class="header-section-number">3.5</span> Accessibility
+              Testing Initiative
+            </h2>
+            <p>
+              The VS Code team tests new features at the end of every month
+              before each release. Megan noticed that while the team tested each
+              platform - MacOS, Linux, and Windows, they were not testing the
+              screen reader experience. A new protocol has been established to
+              ensure better coverage going forward; the iteration following a
+              feature’s release, the team will test the feature using screen
+              readers. Retroactive testing of features is currently underway to
+              make up for this historical oversight. JooYoung’s creation of
+              issues about old and new features alike inspired and justified
+              this initiaive.
+            </p>
+          </section>
+        </section>
+        <section id="discussion-and-conclusion" class="level1" data-number="4">
+          <h1 data-number="4">
+            <span class="header-section-number">4</span> Discussion and
+            Conclusion
+          </h1>
+          <ul>
+            <li>Reflection on what we have learned from this collaboration.</li>
+          </ul>
+          <p>
+            Screen reader users have unique insight into accessibility issues
+            and provide creative solutions to technical problems. Collaborating
+            with screen reader users improves understanding of accessibility
+            issues (for the sighted developer) and features (for the screen
+            reader user), increases the drive to address issues, and
+            dramatically improves the accessibility of a product. Increased
+            accessibility results in a better product for all. For example,
+            while the terminal accessible buffer was designed for screen reader
+            users, others have suggested they
+            <a
+              href="https://github.com/microsoft/vscode/issues/182210#issuecomment-1546733921"
+              >benefit from the feature</a
+            >.
+          </p>
+          <ul>
+            <li>
+              What we recommend for other open-source communities for better
+              accessibility.
+            </li>
+          </ul>
+          <p>
+            It is important to share findings so that other developers can learn
+            and apply the knowledge to their applications. Megan and JooYoung
+            participated in an
+            <a
+              href="https://learn.microsoft.com/en-us/events/vs-code-day-2023/accessibilty-in-vs-code"
+              >accessibility presentation</a
+            >
+            via livestream which reached 159,769 people within just the first
+            two weeks. Additionally, JooYoung will be leading the team in a deep
+            dive about his experience using VS Code. Megan believes getting a
+            glimpse of JooYoung’s experience will help the team understand the
+            importance of and challenges related to accessibility.
+          </p>
+          <p>
+            Considering accessibility early on in a feature’s implementation is
+            critical so that screen reader users can experience the latest
+            technology without delay. Working closely with JooYoung, Megan has
+            witnessed that screen reader users can be totally blocked if this is
+            not considered or addressed properly. As such, accessibility fixes
+            should be prioritized over most others.
+          </p>
+        </section>
+        <section id="acknowledgments" class="level1" data-number="5">
+          <h1 data-number="5">
+            <span class="header-section-number">5</span> Acknowledgments
+          </h1>
+          <div class="acks">
+            <p>
+              We thank … - Isidor Nikolic - Kai Maetzel - Daniel Imms - Raymond
+              Zhao - Roberto Perez - José Vilmar Estácio de Souza - VS Code team
+              - Amnon Freidlin
+            </p>
+          </div>
+        </section>
+        <section id="references" class="level1 unnumbered">
+          <h1 class="unnumbered">References</h1>
+          <div id="refs" role="list"></div>
+        </section>
+        <section id="appendix" class="level1" data-number="6">
+          <h1 data-number="6">
+            <span class="header-section-number">6</span> Appendix
+          </h1>
+        </section>
+        <section id="sec-gh_log" class="level1" data-number="7">
+          <h1 data-number="7">
+            <span class="header-section-number">7</span> Appendix:
+            VSCodeAccessibility Discussions on GitHub
+          </h1>
+          <p>
+            The following are JooYoung’s GitHub contributions, including issues,
+            pull requests, comments, and mentions, related to accessibility up
+            to the time of this paper’s submission.
+          </p>
+          <div class="sourceCode" id="cb1">
+            <pre
+              class="sourceCode sh code-with-copy"
+            ><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> gh search issues <span class="at">--repo</span> microsoft/vscode <span class="at">--include-prs</span> <span class="at">--involves</span> jooyoungseo <span class="at">-L</span> 200</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+          </div>
+          <div class="sourceCode" id="cb2">
+            <pre
+              class="sourceCode sh code-with-copy"
+            ><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">issue</span>   microsoft/vscode    186857  open    <span class="pp">[</span><span class="ss">Accessibility</span><span class="pp">]</span> Checkboxes are unlabeled in <span class="kw">`</span><span class="ex">Export</span> Profile...<span class="kw">`</span> bug, accessibility  2023-07-03T15:16:09Z</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">issue</span>   microsoft/vscode    186754  open    data science audio and text graph for visually impaired person  feature-request, accessibility  2023-07-03T15:44:25Z</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">issue</span>   microsoft/vscode    186679  open    Alert that the help hint has been disabled  bug, accessibility  2023-06-29T21:41:13Z</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">issue</span>   microsoft/vscode    186678  open    Change accessible buffer command navigation keybinding for screen reader users  feature-request, macos, terminal-accessibility  2023-06-30T13:21:00Z</span>
@@ -442,253 +1225,386 @@ div.csl-indent {
 <span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="st">issue   microsoft/vscode    103095  closed  Auto-complete popup puts redundant "item" prefix per suggested code for screen readers  bug, verified, accessibility, insiders-released 2020-09-11T23:22:23Z</span></span>
 <span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="st">issue   microsoft/vscode    98918   closed  Terminal output div container should be more accessible for screen readers  bug, upstream, accessibility, terminal-accessibility    2023-02-01T17:06:54Z</span></span>
 <span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a><span class="st">issue   microsoft/vscode    95570   closed  Support terminal link keyboard navigation   feature-request, accessibility, terminal, on-testplan, on-release-notes, terminal-links, insiders-released  2022-02-20T23:24:33Z</span></span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a><span class="st">issue   microsoft/vscode    90408   open    Feature request: Accessibility support for Jupyter notebooks in VSCode  feature-request, accessibility, notebook    2023-06-05T08:16:57Z</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a><span class="st">issue   microsoft/vscode    90408   open    Feature request: Accessibility support for Jupyter notebooks in VSCode  feature-request, accessibility, notebook    2023-06-05T08:16:57Z</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre>
+          </div>
+        </section>
 
+        <div id="quarto-appendix" class="default">
+          <aside
+            id="footnotes"
+            class="footnotes footnotes-end-of-document"
+            role="doc-endnotes"
+          >
+            <h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>We use the identity-first language (i.e., blind people) instead of the person-first language (i.e., people with visual impairments or vision loss) when addressing this population, guided by the perspective of the National Federation of the Blind.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>In this paper, the terms integrated development environment and code editor are used interchangeably.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main>
-<!-- /main column -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
+            <ol>
+              <li id="fn1">
+                <p>
+                  We use the identity-first language (i.e., blind people)
+                  instead of the person-first language (i.e., people with visual
+                  impairments or vision loss) when addressing this population,
+                  guided by the perspective of the National Federation of the
+                  Blind.<a
+                    href="#fnref1"
+                    class="footnote-back"
+                    role="doc-backlink"
+                    >↩︎</a
+                  >
+                </p>
+              </li>
+              <li id="fn2">
+                <p>
+                  In this paper, the terms integrated development environment
+                  and code editor are used interchangeably.<a
+                    href="#fnref2"
+                    class="footnote-back"
+                    role="doc-backlink"
+                    >↩︎</a
+                  >
+                </p>
+              </li>
+            </ol>
+          </aside>
+        </div>
+      </main>
+      <!-- /main column -->
+      <script id="quarto-html-after-body" type="application/javascript">
+        window.document.addEventListener("DOMContentLoaded", function (event) {
+          const toggleBodyColorMode = (bsSheetEl) => {
+            const mode = bsSheetEl.getAttribute("data-mode");
+            const bodyEl = window.document.querySelector("body");
+            if (mode === "dark") {
+              bodyEl.classList.add("quarto-dark");
+              bodyEl.classList.remove("quarto-light");
+            } else {
+              bodyEl.classList.add("quarto-light");
+              bodyEl.classList.remove("quarto-dark");
             }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
+          };
+          const toggleBodyColorPrimary = () => {
+            const bsSheetEl = window.document.querySelector(
+              "link#quarto-bootstrap"
+            );
+            if (bsSheetEl) {
+              toggleBodyColorMode(bsSheetEl);
             }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
+          };
+          toggleBodyColorPrimary();
+          const icon = "";
+          const anchorJS = new window.AnchorJS();
+          anchorJS.options = {
+            placement: "right",
+            icon: icon,
+          };
+          anchorJS.add(".anchored");
+          const isCodeAnnotation = (el) => {
+            for (const clz of el.classList) {
+              if (clz.startsWith("code-annotation-")) {
+                return true;
+              }
+            }
+            return false;
+          };
+          const clipboard = new window.ClipboardJS(".code-copy-button", {
+            text: function (trigger) {
+              const codeEl = trigger.previousElementSibling.cloneNode(true);
+              for (const childEl of codeEl.children) {
+                if (isCodeAnnotation(childEl)) {
+                  childEl.remove();
+                }
+              }
+              return codeEl.innerText;
+            },
+          });
+          clipboard.on("success", function (e) {
+            // button target
+            const button = e.trigger;
+            // don't keep focus
+            button.blur();
+            // flash "checked"
+            button.classList.add("code-copy-button-checked");
+            var currentTitle = button.getAttribute("title");
+            button.setAttribute("title", "Copied!");
+            let tooltip;
+            if (window.bootstrap) {
+              button.setAttribute("data-bs-toggle", "tooltip");
+              button.setAttribute("data-bs-placement", "left");
+              button.setAttribute("data-bs-title", "Copied!");
+              tooltip = new bootstrap.Tooltip(button, {
+                trigger: "manual",
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8],
+              });
+              tooltip.show();
+            }
+            setTimeout(function () {
+              if (tooltip) {
+                tooltip.hide();
+                button.removeAttribute("data-bs-title");
+                button.removeAttribute("data-bs-toggle");
+                button.removeAttribute("data-bs-placement");
+              }
+              button.setAttribute("title", currentTitle);
+              button.classList.remove("code-copy-button-checked");
+            }, 1000);
+            // clear code selection
+            e.clearSelection();
+          });
+          function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+            const config = {
+              allowHTML: true,
+              maxWidth: 500,
+              delay: 100,
+              arrow: false,
+              appendTo: function (el) {
+                return el.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: "quarto",
+              placement: "bottom-start",
+            };
+            if (contentFn) {
+              config.content = contentFn;
+            }
+            if (onTriggerFn) {
+              config.onTrigger = onTriggerFn;
+            }
+            if (onUntriggerFn) {
+              config.onUntrigger = onUntriggerFn;
+            }
+            window.tippy(el, config);
           }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
+          const noterefs = window.document.querySelectorAll(
+            'a[role="doc-noteref"]'
+          );
+          for (var i = 0; i < noterefs.length; i++) {
+            const ref = noterefs[i];
+            tippyHover(ref, function () {
+              // use id or data attribute instead here
+              let href =
+                ref.getAttribute("data-footnote-href") ||
+                ref.getAttribute("href");
+              try {
+                href = new URL(href).hash;
+              } catch {}
+              const id = href.replace(/^#\/?/, "");
+              const note = window.document.getElementById(id);
+              return note.innerHTML;
+            });
+          }
+          const xrefs = window.document.querySelectorAll("a.quarto-xref");
+          const processXRef = (id, note) => {
+            if (id.startsWith("sec-")) {
+              // Special case sections, only their first couple elements
+              const container = document.createElement("div");
+              if (note.children && note.children.length > 2) {
+                for (let i = 0; i < 2; i++) {
+                  container.appendChild(note.children[i].cloneNode(true));
+                }
+                return container.innerHTML;
+              } else {
+                return note.innerHTML;
+              }
+            } else {
+              return note.innerHTML;
+            }
+          };
+          for (var i = 0; i < xrefs.length; i++) {
+            const xref = xrefs[i];
+            tippyHover(
+              xref,
+              undefined,
+              function (instance) {
+                instance.disable();
+                let url = xref.getAttribute("href");
+                let hash = undefined;
+                try {
+                  hash = new URL(url).hash;
+                } catch {}
+                const id = hash.replace(/^#\/?/, "");
+                const note = window.document.getElementById(id);
+                if (note !== null) {
+                  try {
+                    const html = processXRef(id, note);
+                    instance.setContent(html);
+                  } finally {
+                    instance.enable();
+                    instance.show();
+                  }
+                } else {
+                  // See if we can fetch this
+                  fetch(url.split("#")[0])
+                    .then((res) => res.text())
+                    .then((html) => {
+                      const parser = new DOMParser();
+                      const htmlDoc = parser.parseFromString(html, "text/html");
+                      const note = htmlDoc.getElementById(id);
+                      if (note !== null) {
+                        const html = processXRef(id, note);
+                        instance.setContent(html);
+                      }
+                    })
+                    .finally(() => {
+                      instance.enable();
+                      instance.show();
+                    });
+                }
+              },
+              function (instance) {}
+            );
+          }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = (cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' + annotation + '"';
+            const selector = "span[" + cellAttr + "][" + lineAttr + "]";
+            return selector;
+          };
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute(
+              "data-target-annotation"
+            );
+            const annoteSpan = window.document.querySelector(
+              selectorForAnnotation(targetCell, targetAnnotation)
+            );
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            });
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(
+                  lineIds[lineIds.length - 1]
+                );
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
+              }
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it
+                let div = window.document.getElementById(
+                  "code-annotation-line-highlight"
+                );
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = "absolute";
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                div.style.left = 0;
+                let gutterDiv = window.document.getElementById(
+                  "code-annotation-line-highlight-gutter"
+                );
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute(
+                    "id",
+                    "code-annotation-line-highlight-gutter"
+                  );
+                  gutterDiv.style.position = "absolute";
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector(
+                    ".code-annotation-gutter"
+                  );
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
+              }
+              selectedAnnoteEl = annoteEl;
+            }
+          };
+          const unselectCodeLines = () => {
+            const elementsIds = [
+              "code-annotation-line-highlight",
+              "code-annotation-line-highlight-gutter",
+            ];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+          // Attach click handler to the DT
+          const annoteDls = window.document.querySelectorAll(
+            "dt[data-target-cell]"
+          );
+          for (const annoteDlNode of annoteDls) {
+            annoteDlNode.addEventListener("click", (event) => {
+              const clickedEl = event.target;
+              if (clickedEl !== selectedAnnoteEl) {
+                unselectCodeLines();
+                const activeEl = window.document.querySelector(
+                  "dt[data-target-cell].code-annotation-active"
+                );
+                if (activeEl) {
+                  activeEl.classList.remove("code-annotation-active");
+                }
+                selectCodeLines(clickedEl);
+                clickedEl.classList.add("code-annotation-active");
+              } else {
+                // Unselect the line
+                unselectCodeLines();
+                clickedEl.classList.remove("code-annotation-active");
+              }
+            });
+          }
+          const findCites = (el) => {
+            const parentEl = el.parentElement;
+            if (parentEl) {
+              const cites = parentEl.dataset.cites;
+              if (cites) {
+                return {
+                  el,
+                  cites: cites.split(" "),
+                };
+              } else {
+                return findCites(el.parentElement);
+              }
+            } else {
+              return undefined;
+            }
+          };
+          var bibliorefs = window.document.querySelectorAll(
+            'a[role="doc-biblioref"]'
+          );
+          for (var i = 0; i < bibliorefs.length; i++) {
+            const ref = bibliorefs[i];
+            const citeInfo = findCites(ref);
+            if (citeInfo) {
+              tippyHover(citeInfo.el, function () {
+                var popup = window.document.createElement("div");
+                citeInfo.cites.forEach(function (cite) {
+                  var citeDiv = window.document.createElement("div");
+                  citeDiv.classList.add("hanging-indent");
+                  citeDiv.classList.add("csl-entry");
+                  var biblioDiv = window.document.getElementById("ref-" + cite);
+                  if (biblioDiv) {
+                    citeDiv.innerHTML = biblioDiv.innerHTML;
+                  }
+                  popup.appendChild(citeDiv);
+                });
+                return popup.innerHTML;
+              });
+            }
           }
         });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-});
-</script>
-</div> <!-- /content -->
-
-
-
-</body></html>
+      </script>
+    </div>
+    <!-- /content -->
+  </body>
+</html>
