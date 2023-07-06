@@ -17,7 +17,7 @@ format:
   acm-html:
     output-file: index.html
 
-bibliography: bibliography.bib
+bibliography: [bibliography.bib, a11y_framework.bib, Health+PVI_Research.bib]
 
 title: "Coding Non-visually in Visual Studio Code: Collaboration Towards Accessible Development Environment for Blind Programmers"
 
