@@ -5,7 +5,7 @@ This repo is for a manuscript in preparation for [the ACM ASSETS 2023](https://a
 
 ## Deadline
 
-July 7
+Friday, July 7, 2023, 11:59 P.M. Anywhere on Earth (UTC -12:00) .
 
 ## How to Write?
 
@@ -15,4 +15,4 @@ Note: it takes some time to install required LaTeX packages when you render the 
 
 ## Some Example Papers
 
-We are working on experience report. Unfortunately, 2023 committee has not provided any examples on their official website. However, [2022 examples](https://assets22.sigaccess.org/experience-reports.html) can give us some ideas.
+We are working on [experience report](https://assets23.sigaccess.org/experience-reports.html).
