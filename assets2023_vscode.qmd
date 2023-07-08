@@ -73,17 +73,13 @@ The VS Code team tests new features at the end of every month before each releas
 
 # Discussion and Conclusion
 
-Our ongoing collaboration between sighted and blind developers underlines the importance and potential of improving accessibility in open-source tools, specifically illustrated by our work on Visual Studio Code. A notable success is the terminal accessible buffer, a solution initially created for screen reader users, that proved to be beneficial for a wider user base [as seen here](https://github.com/microsoft/vscode/issues/182210#issuecomment-1546733921).
-
-Furthermore, knowledge sharing, epitomized by Megan and JooYoung's [livestream presentation](https://learn.microsoft.com/en-us/events/vs-code-day-2023/accessibilty-in-vs-code), is a cornerstone in promoting an inclusive, democratic coding and programming culture.
+Our ongoing collaboration between sighted and blind developers underlines the importance and potential of improving accessibility in open-source tools, specifically illustrated by our work on Visual Studio Code. A notable success is the terminal accessible buffer, a solution initially created for screen reader users, that proved to be beneficial for a wider user base [as seen here](https://github.com/microsoft/vscode/issues/182210#issuecomment-1546733921). Furthermore, knowledge sharing, epitomized by Megan and JooYoung's [livestream presentation](https://learn.microsoft.com/en-us/events/vs-code-day-2023/accessibilty-in-vs-code), is a cornerstone in promoting an inclusive, democratic coding and programming culture.
 
 The urgency of addressing accessibility early in the development process has been a vital lesson from our collaboration. Postponing such efforts can create significant barriers for screen reader users, therefore prioritizing these enhancements is crucial.
 
 Moreover, we are enthusiastically working on Copilot, an AI-based, Language Model (LLM) feature, with a dedicated focus on its accessibility for blind programmers. Anticipating the considerable potential of Copilot, we are committed to ensuring that blind programmers can utilize this technology without delay, rather than having to wait for subsequent accessibility improvements.
 
 Drawing these threads together, our co-design efforts emphasize the necessity of creating a more equitable coding environment where all programmers, regardless of their disabilities, can participate fully. Our ongoing engagement and activities on GitHub aim to serve as a motivation and guide for other open-source developers towards similar endeavors of inclusive development.
-
-# Acknowledgments
 
 ::: acks
 
