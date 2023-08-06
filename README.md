@@ -16,3 +16,8 @@ Note: it takes some time to install required LaTeX packages when you render the 
 ## Some Example Papers
 
 We are working on [experience report](https://assets23.sigaccess.org/experience-reports.html).
+
+## Camera-Ready Version
+
+Read [General Camera-Ready Guidelines](https://assets23.sigaccess.org/camera-ready.html) for the preparation. The camera-ready deadline is August 18th AOE.
+
