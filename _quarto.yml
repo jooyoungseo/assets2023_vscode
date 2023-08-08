@@ -51,10 +51,10 @@ acm-metadata:
   # anonymous: true
   
   # comment this out to build a draft version
-  # final: true
+  final: true
 
   # comment this out to specify detailed document options
-  acmart-options: manuscript,review
+  acmart-options: manuscript
 
   # acm preamble information
   copyright-year: 2018
