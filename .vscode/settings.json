@@ -83,5 +83,12 @@
       "scheme": "file",
       "pattern": "assets2023_vscode.qmd"
     }
+  ],
+  "spellright.documentTypes": [
+    "rmd",
+    "quarto",
+    "markdown",
+    "latex",
+    "plaintext"
   ]
 }
