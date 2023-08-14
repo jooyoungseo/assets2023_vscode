@@ -89,7 +89,7 @@ Drawing these threads together, our co-design efforts emphasize the necessity of
 
 ::: acks
 
-We extend our gratitude to Program-L, an online community of blind programmers, for their invaluable feedback and testing of VS Code, as well as their insightful accessibility suggestions. We also appreciate the VS Code team for their commitment to accessibility. Special thanks to Isidor Nikolic, Kai Maetzel, and Daniel Imms for their dedication and invaluable insights; to Raymond Zhao and Roberto Perez for enhancing the site's accessibility; to José Vilmar Estácio de Souza, Amnon Freidlin, and Gino Scarpino for their diligent testing and collaboration.
+We extend our gratitude to Program-L, an online community of blind programmers, for their invaluable feedback and testing of VS Code, as well as their insightful accessibility suggestions. We also appreciate the VS Code team for their commitment to accessibility. Special thanks to Isidor Nikolic, Kai Maetzel, and Daniel Imms for their dedication and invaluable insights; to Raymond Zhao and Roberto Perez for enhancing the site's accessibility; to José Vilmar Estácio de Souza, Amnon Freidlin, Marie Robbins, and Gino Scarpino for their diligent testing and collaboration.
 
 :::
 
