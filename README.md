@@ -21,3 +21,6 @@ We are working on [experience report](https://assets23.sigaccess.org/experience-
 
 Read [General Camera-Ready Guidelines](https://assets23.sigaccess.org/camera-ready.html) for the preparation. The camera-ready deadline is August 18th AOE.
 
+## Video Presentation
+
+The video presentation deadline is August 30th AOE. Read [Video Presentation GuidelinesTitle](https://assets23.sigaccess.org/guidelines-policies.html#a11y-videos) for the preparation.
