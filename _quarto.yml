@@ -19,6 +19,9 @@ format:
 
 bibliography: bibliography.bib
 
+code-block-border-left: false
+code-block-bg: false
+
 title: "Coding Non-Visually in Visual Studio Code: Collaboration Towards Accessible Development Environment for Blind Programmers"
 
 # if short-title is defined, then it's used
@@ -54,7 +57,7 @@ acm-metadata:
   final: true
 
   # comment this out to specify detailed document options
-  acmart-options: manuscript
+  acmart-options: sigconf
 
   # acm preamble information
   copyright-year: 2018
